@@ -6,11 +6,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="viewport"
-            content="width=device-width, initial-   scale=1"
-          />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.22.0/antd.min.css"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
           />
         </Head>
         <body>
