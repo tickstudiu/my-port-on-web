@@ -2,11 +2,18 @@ import css from "styled-jsx/css";
 
 export default css.global`
     .text-code ::before {
+        color: #A77231;
          content: "{ ";
     }
     
     .text-code ::after {
+        color: #A77231;
          content: " }";
+    }
+
+    .or ::before{
+        content: "|";
+        color: #D0D4D5;
     }
 
     .display-1 {
@@ -15,10 +22,34 @@ export default css.global`
         margin-bottom: 22px;
     }
 
+    .display-3 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
     .display-2 {
-        color: #E87B5A !important;
         font-size: 20px;
         margin: 0;
+    }
+
+    .text-sub {
+        color: #848388 !important;
+    }
+
+    .mb-2 {
+        margin-bottom: 2rem;
+    }
+
+    .mb-1 {
+        margin-bottom: 1rem;
+    }
+
+    .text-primary {
+        color: #E87B5A !important;
+    }
+
+    .text-center {
+        text-align: center;
     }
 
     .container {
@@ -28,11 +59,16 @@ export default css.global`
     }
 
     .lead {
-        max-width: 678px;
         font-size: 20px;
-        color: #D0D4D5;
-        text-align: center;
+    }
+
+    .content-touch-me {
+        max-width: 678px;
         margin-bottom 45px;
+    }
+
+    .text-muted {
+        color: #D0D4D5 !important;
     }
 
     .list {
@@ -40,9 +76,16 @@ export default css.global`
     }
 
     .item {
-        float: left;
         padding-right: 45px;
         font-size: 20px;
+    }
+
+    .d-inline {
+        display:inline;
+    }
+
+    .to-left {
+        float: left;
     }
 
     section {
@@ -52,6 +95,11 @@ export default css.global`
         flex-direction: column;
     
         margin: 0 130px;
-        height: 100vh;
+        min-height: 100vh;
+    }
+
+    ul {
+        padding-inline-start: 20px;
+        margin: 0;
     }
 `;
