@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import { useIntersection } from "react-use";
 import PropTypes from "prop-types";
 import { i18n, withTranslation } from "../i18n";
-import { Layout, Button, Row, Col, Card, Divider, Tabs } from "antd";
+import { Layout, Button, Row, Col, Card, Divider, Tabs, Tooltip } from "antd";
+import { MailOutlined, PhoneOutlined, FacebookOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -44,6 +45,8 @@ const Homepage = ({ t }) => {
         >
           {t("change-locale")}
         </Button> */}
+
+        <section>test</section>
         <section>
           <Row style={{ padding: "0 80px" }}>
             <Col span={12} className="text-center">
@@ -71,30 +74,37 @@ const Homepage = ({ t }) => {
               >
                 <article>
                   <h1 className="text-code display-3">Who am I?</h1>
+                  <p className="display-2 mb-1">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim
+                  </p>
                   <p className="display-2 text-sub mb-1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco laboris nisi ut aliquip ex ea commodo consequat.
                   </p>
-                  <p className="display-2 text-sub mb-1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim
-                  </p>
 
                   <Row>
-                    <Col>
+                    <Col span={8}>
                       <ul>
                         <li className="item">ReactJs</li>
                         <li className="item">VueJs</li>
                         <li className="item">Ionic</li>
                       </ul>
                     </Col>
-                    <Col>
+                    <Col span={8}>
                       <ul>
                         <li className="item">Angular</li>
-                        <li className="item">NextJs</li>
+                        <li className="item">
+                          <Tooltip
+                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+                            placement="bottom"
+                          >
+                            NextJs
+                          </Tooltip>
+                        </li>
                       </ul>
                     </Col>
                   </Row>
@@ -171,100 +181,18 @@ const Homepage = ({ t }) => {
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim
                     </p>
-                    <ul>
-                      <li className="item">ReactJs</li>
-                      <li className="item">Antd</li>
-                    </ul>
-                    <Divider style={{ background: "#D0D4D5" }} />
-                  </Project>
-                </div>
-              </Col>
-
-              <Col lg={12}>
-                <div style={{ padding: "10px" }}>
-                  <Project bordered={false}>
-                    <img
-                      src="/images/img1.jpg"
-                      alt="my image"
-                      style={{
-                        width: "100%",
-                        height: "500px",
-                        borderRadius: "8px",
-                        marginBottom: "23px",
-                        border: "6px solid #fff",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <p className="display-2 mb-1">commodo consequat.</p>
-                    <p className="display-2 text-sub mb-1">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim
-                    </p>
-                    <ul>
-                      <li className="item">ReactJs</li>
-                      <li className="item">Antd</li>
-                    </ul>
-                    <Divider style={{ background: "#D0D4D5" }} />
-                  </Project>
-                </div>
-              </Col>
-
-              <Col lg={12}>
-                <div style={{ padding: "10px" }}>
-                  <Project bordered={false}>
-                    <img
-                      src="/images/img1.jpg"
-                      alt="my image"
-                      style={{
-                        width: "100%",
-                        height: "500px",
-                        borderRadius: "8px",
-                        marginBottom: "23px",
-                        border: "6px solid #fff",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <p className="display-2 mb-1">commodo consequat.</p>
-                    <p className="display-2 text-sub mb-1">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim
-                    </p>
-                    <ul>
-                      <li className="item">ReactJs</li>
-                      <li className="item">Antd</li>
-                    </ul>
-                    <Divider style={{ background: "#D0D4D5" }} />
-                  </Project>
-                </div>
-              </Col>
-
-              <Col lg={12}>
-                <div style={{ padding: "10px" }}>
-                  <Project bordered={false}>
-                    <img
-                      src="/images/img1.jpg"
-                      alt="my image"
-                      style={{
-                        width: "100%",
-                        height: "500px",
-                        borderRadius: "8px",
-                        marginBottom: "23px",
-                        border: "6px solid #fff",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <p className="display-2 mb-1">commodo consequat.</p>
-                    <p className="display-2 text-sub mb-1">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim
-                    </p>
-                    <ul>
-                      <li className="item">ReactJs</li>
-                      <li className="item">Antd</li>
-                    </ul>
+                    <Row>
+                      <Col span={8}>
+                        <ul>
+                          <li className="item">ReactJs</li>
+                        </ul>
+                      </Col>
+                      <Col span={8}>
+                        <ul>
+                          <li className="item">Angular</li>
+                        </ul>
+                      </Col>
+                    </Row>
                     <Divider style={{ background: "#D0D4D5" }} />
                   </Project>
                 </div>
@@ -282,13 +210,28 @@ const Homepage = ({ t }) => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
-          <ul className="list">
-            <li className="item to-left">tickstudiu@gmail.com</li>
-            <li className="item to-left">0123-45678910</li>
-            <li className="item to-left">
-              <a href="http://">wanchalerm suksawat</a>
-            </li>
-          </ul>
+          <Row style={{ marginBottom: "45px" }}>
+            <Col>
+              <Tooltip
+                title="tickstudiu@gmail.com"
+                placement="bottom"
+              ><MailOutlined style={{ padding: "0 20px" }} /></Tooltip>
+            </Col>
+
+            <Col>
+              <Tooltip
+                title="082-437-7241"
+                placement="bottom"
+              ><PhoneOutlined style={{ padding: "0 20px" }} /></Tooltip>
+            </Col>
+
+            <Col>
+              <Tooltip
+                title="Wanchalerm Suksawat"
+                placement="bottom"
+              ><FacebookOutlined style={{ padding: "0 20px" }} /></Tooltip>
+            </Col>
+          </Row>
           <Button
             size="large"
             style={{ padding: "0px 45px", background: "transparent" }}
