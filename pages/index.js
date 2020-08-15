@@ -216,29 +216,104 @@ const Homepage = ({ t }) => {
           </p>
           <Row style={{ marginBottom: "45px" }}>
             <Col>
-              <Tooltip title="tickstudiu@gmail.com" placement="bottom">
-                <MailOutlined style={{ padding: "0 20px" }} />
-              </Tooltip>
+              <motion.div
+                initial={{
+                  opacity: 0.7,
+                }}
+                whileHover={{
+                  scale: 1.5,
+                  color: "#E87B5A",
+                  opacity: 1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 700,
+                  },
+                }}
+              >
+                <Tooltip
+                  title="tickstudiu@gmail.com"
+                  placement="bottom"
+                  mouseEnterDelay="0.4"
+                >
+                  <MailOutlined style={{ padding: "0 20px" }} />
+                </Tooltip>
+              </motion.div>
             </Col>
 
             <Col>
-              <Tooltip title="082-437-7241" placement="bottom">
-                <PhoneOutlined style={{ padding: "0 20px" }} />
-              </Tooltip>
+              <motion.div
+                initial={{
+                  opacity: 0.7,
+                }}
+                whileHover={{
+                  scale: 1.5,
+                  color: "#E87B5A",
+                  opacity: 1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 700,
+                  },
+                }}
+              >
+                <Tooltip
+                  title="082-437-7241"
+                  placement="bottom"
+                  mouseEnterDelay="0.4"
+                >
+                  <PhoneOutlined style={{ padding: "0 20px" }} />
+                </Tooltip>
+              </motion.div>
             </Col>
 
             <Col>
-              <Tooltip title="Wanchalerm Suksawat" placement="bottom">
-                <FacebookOutlined style={{ padding: "0 20px" }} />
-              </Tooltip>
+              <motion.div
+                initial={{
+                  opacity: 0.7,
+                }}
+                whileHover={{
+                  scale: 1.5,
+                  color: "#E87B5A",
+                  opacity: 1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 700,
+                  },
+                }}
+              >
+                <Tooltip
+                  title={() => {
+                    return (
+                      <a href="https://www.facebook.com/sliple.ness">
+                        Wanchalerm Suksawat
+                      </a>
+                    );
+                  }}
+                  placement="bottom"
+                  mouseEnterDelay="0.4"
+                >
+                  <FacebookOutlined style={{ padding: "0 20px" }} />
+                </Tooltip>
+              </motion.div>
             </Col>
           </Row>
+          <motion.div whileHover={{
+            y: -5,
+            rotateX: 20,
+            boxShadow: "0px 10px 10px rgba( 232, 123, 90, 0.2 )"
+          }} whileTap={{
+            scale: 0.9,
+            boxShadow: "none"
+          }}>
           <Button
+            type="primary"
+            style={{
+              padding: "0px 45px"
+            }}
             size="large"
-            style={{ padding: "0px 45px", background: "transparent" }}
           >
             Get In Touch
           </Button>
+          </motion.div>
         </section>
 
         <div style={{ position: "relative" }}>
@@ -271,6 +346,10 @@ const Homepage = ({ t }) => {
             whileHover={{
               scale: 1.5,
               opacity: 1,
+              transition: {
+                type: "spring",
+                stiffness: 500,
+              },
             }}
           />
 
@@ -285,7 +364,6 @@ const Homepage = ({ t }) => {
               top: "-100px",
               zIndex: "1010",
             }}
-
             initial={{
               y: 0,
               opacity: 0.25,
@@ -304,6 +382,10 @@ const Homepage = ({ t }) => {
             whileHover={{
               scale: 1.5,
               opacity: 1,
+              transition: {
+                type: "spring",
+                stiffness: 400,
+              },
             }}
           />
 
@@ -318,7 +400,6 @@ const Homepage = ({ t }) => {
               top: "-275px",
               zIndex: "1010",
             }}
-
             initial={{
               y: 0,
               opacity: 0.25,
@@ -336,6 +417,10 @@ const Homepage = ({ t }) => {
             whileHover={{
               scale: 1.5,
               opacity: 1,
+              transition: {
+                type: "spring",
+                stiffness: 350,
+              },
             }}
           />
         </div>
