@@ -3,7 +3,11 @@ import { useIntersection } from "react-use";
 import PropTypes from "prop-types";
 import { i18n, withTranslation } from "../i18n";
 import { Layout, Button, Row, Col, Card, Divider, Tabs, Tooltip } from "antd";
-import { MailOutlined, PhoneOutlined, FacebookOutlined } from "@ant-design/icons";
+import {
+  MailOutlined,
+  PhoneOutlined,
+  FacebookOutlined,
+} from "@ant-design/icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -89,7 +93,7 @@ const Homepage = ({ t }) => {
                   <Row>
                     <Col span={8}>
                       <ul>
-                        <li className="item">ReactJs</li>
+                        <li className="item">Reactjs</li>
                         <li className="item">VueJs</li>
                         <li className="item">Ionic</li>
                       </ul>
@@ -212,24 +216,21 @@ const Homepage = ({ t }) => {
           </p>
           <Row style={{ marginBottom: "45px" }}>
             <Col>
-              <Tooltip
-                title="tickstudiu@gmail.com"
-                placement="bottom"
-              ><MailOutlined style={{ padding: "0 20px" }} /></Tooltip>
+              <Tooltip title="tickstudiu@gmail.com" placement="bottom">
+                <MailOutlined style={{ padding: "0 20px" }} />
+              </Tooltip>
             </Col>
 
             <Col>
-              <Tooltip
-                title="082-437-7241"
-                placement="bottom"
-              ><PhoneOutlined style={{ padding: "0 20px" }} /></Tooltip>
+              <Tooltip title="082-437-7241" placement="bottom">
+                <PhoneOutlined style={{ padding: "0 20px" }} />
+              </Tooltip>
             </Col>
 
             <Col>
-              <Tooltip
-                title="Wanchalerm Suksawat"
-                placement="bottom"
-              ><FacebookOutlined style={{ padding: "0 20px" }} /></Tooltip>
+              <Tooltip title="Wanchalerm Suksawat" placement="bottom">
+                <FacebookOutlined style={{ padding: "0 20px" }} />
+              </Tooltip>
             </Col>
           </Row>
           <Button
@@ -239,6 +240,105 @@ const Homepage = ({ t }) => {
             Get In Touch
           </Button>
         </section>
+
+        <div style={{ position: "relative" }}>
+          <motion.img
+            src="/images/vue.png"
+            alt="react"
+            style={{
+              width: "75px",
+              height: "75px",
+              position: "absolute",
+              left: "150px",
+              top: "-250px",
+              zIndex: "1010",
+            }}
+            initial={{
+              y: 0,
+              opacity: 0.25,
+            }}
+            animate={{
+              delay: 0.5,
+              y: -300,
+              rotate: [2, -3],
+              transition: {
+                yoyo: Infinity,
+                duration: 2,
+                damping: 30,
+                ease: "easeInOut",
+              },
+            }}
+            whileHover={{
+              scale: 1.5,
+              opacity: 1,
+            }}
+          />
+
+          <motion.img
+            src="/images/react.png"
+            alt="react"
+            style={{
+              width: "75px",
+              height: "75px",
+              position: "absolute",
+              left: "650px",
+              top: "-100px",
+              zIndex: "1010",
+            }}
+
+            initial={{
+              y: 0,
+              opacity: 0.25,
+            }}
+            animate={{
+              y: -100,
+              rotate: [4, -6],
+              transition: {
+                delay: 0.3,
+                yoyo: Infinity,
+                duration: 1.3,
+                damping: 30,
+                ease: "easeInOut",
+              },
+            }}
+            whileHover={{
+              scale: 1.5,
+              opacity: 1,
+            }}
+          />
+
+          <motion.img
+            src="/images/angular.png"
+            alt="react"
+            style={{
+              width: "75px",
+              height: "75px",
+              position: "absolute",
+              left: "1500px",
+              top: "-275px",
+              zIndex: "1010",
+            }}
+
+            initial={{
+              y: 0,
+              opacity: 0.25,
+            }}
+            animate={{
+              y: -300,
+              rotate: [2, -3],
+              transition: {
+                yoyo: Infinity,
+                duration: 1.7,
+                damping: 30,
+                ease: "easeInOut",
+              },
+            }}
+            whileHover={{
+              scale: 1.5,
+              opacity: 1,
+            }}
+          />
+        </div>
       </Content>
       <Footer
         style={{
