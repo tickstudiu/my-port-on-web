@@ -114,8 +114,12 @@ export default css.global`
         transition: all 0.1s;
     }
 
+    .link::before {
+        content: " ";
+    }
+
     .link::after {
-        content: "";
+        content: " ";
         position: absolute;
         width: 100%;
         height: 2px;
@@ -129,6 +133,7 @@ export default css.global`
 
     .link:hover {
         opacity: 1;
+        color: #E87B5A !important;
     }
 
     .link:hover::after {

@@ -50,7 +50,75 @@ const Homepage = ({ t }) => {
           {t("change-locale")}
         </Button> */}
 
-        <section>test</section>
+        <section>
+          <Row style={{ padding: "0 80px" }}>
+            <Col span={16}>
+              <h3
+                style={{
+                  fontSize: 30,
+                  fontWeight: "bold",
+                  margin: "0",
+                  color: "#B8A48C",
+                }}
+              >
+                Hi, my name is
+              </h3>
+              <h1
+                style={{
+                  fontSize: 80,
+                  fontWeight: "bold",
+                  marginBottom: "-20px",
+                  marginTop: "-20px",
+                }}
+              >
+                Wanchalerm Suksawat
+              </h1>
+              <h1
+                style={{
+                  fontSize: 70,
+                  fontWeight: "bold",
+                  marginBottom: "114px",
+                  color: "#8A898E",
+                }}
+              >
+                And in love with coding
+              </h1>
+              <p className="lead text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <motion.div
+                style={{
+                  width: "234px",
+                }}
+                whileHover={{
+                  y: -5,
+                  rotateX: 20,
+                  boxShadow: "0px 10px 10px rgba( 232, 123, 90, 0.2 )",
+                }}
+                whileTap={{
+                  scale: 0.9,
+                  y: 0,
+                  originY: 0,
+                  boxShadow: "none",
+                }}
+              >
+                <Button
+                  type="primary"
+                  style={{
+                    padding: "0px 45px",
+                  }}
+                  size="large"
+                >
+                  Get In Touch
+                </Button>
+              </motion.div>
+            </Col>
+            <Col span={8}></Col>
+          </Row>
+        </section>
         <section>
           <Row style={{ padding: "0 80px" }}>
             <Col span={12} className="text-center">
@@ -66,12 +134,14 @@ const Homepage = ({ t }) => {
                   objectFit: "cover",
                 }}
                 initial={{
-                  opacity: 0.4,
+                  opacity: 0.8,
                   scale: 0.9,
+                  filter: "grayscale(60%)",
                 }}
                 whileHover={{
                   opacity: 1,
                   scale: 1.1,
+                  filter: "grayscale(0%)",
                   boxShadow: "0px 10px 10px rgba( 0, 0, 0, 0.2 )",
                 }}
               />
@@ -99,7 +169,7 @@ const Homepage = ({ t }) => {
                       {" "}
                       incididunt ut labore et dolore magna{" "}
                     </span>
-                    aliqua. Ut enim ad{" "}
+                    aliqua. Ut enim ad
                     <span className="link"> minim veniam </span>, quis nostrud
                     exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat.
@@ -151,7 +221,7 @@ const Homepage = ({ t }) => {
                     </Col>
                     <Col span={12}>
                       <ul>
-                      <motion.li
+                        <motion.li
                           className="item"
                           whileHover={{
                             x: "20px",
@@ -200,27 +270,32 @@ const Homepage = ({ t }) => {
               tabPosition="left"
               style={{ width: "829px" }}
             >
-              <TabPane tab="Tab 1" key="1">
+              <TabPane tab="2015" key="1">
                 <p className="display-2 mb-1">
-                  2020 - 2020 <span className="or" /> Lorem ipsum dolor sit
-                  amet, consectetur
+                  มหาลัย{" "}
+                  <a className="link" href="https://www.psu.ac.th/th/">
+                    @มหาวิทยาลัยสงขลานครินทร์
+                  </a>
                 </p>
-                <p className="display-2 text-sub mb-1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <p className="display-2 text-sub mb-1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim
-                </p>
+                <ul>
+                  <li>
+                    <p className="display-2 text-sub mb-1" style={{
+                      fontSize: "18px"
+                    }}>
+                      หลังจากที่จบการศึกษาจากหาดใหญ่วิทยาลัย
+                      ได้รับโคต้าเข้ามหาวิทยาลัยสงขลานครินทร์
+                      วิศวกรรมคอมพิวเตอร์ ระหว่างได้ศึกษาได้มีโอกาสเป็น TA
+                      ช่วยสอนพี่ ๆ น้อง ๆ และ ได้แข่งขัน NSC 2019 ในระดับภาคใค้
+                      และยังมีโอกาศในการเข้าอบรมที่ กทม ด้าน desgin
+                      เพื่อกลับให้กับพี่ ๆ น้อง ๆ ทีมีความสนใจด้านนี้เหมือนกัน
+                    </p>
+                  </li>
+                </ul>
               </TabPane>
-              <TabPane tab="Tab 2" key="2">
+              <TabPane tab="2012" key="2">
                 Content of Tab Pane 2
               </TabPane>
-              <TabPane tab="Tab 3" key="3">
+              <TabPane tab="2009" key="3">
                 Content of Tab Pane 3
               </TabPane>
             </Tabs>
