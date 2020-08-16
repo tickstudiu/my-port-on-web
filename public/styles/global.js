@@ -102,4 +102,36 @@ export default css.global`
         padding-inline-start: 20px;
         margin: 0;
     }
+
+    .text-underline {
+        text-decoration: underline;
+    }
+
+    .link {
+        color: #E87B5A;
+        opacity: 0.8;
+        position: relative;
+        transition: all 0.1s;
+    }
+
+    .link::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: 100%;
+        left: 0;
+        background: #E87B5A;
+        transition: all 0.2s ease-out;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    .link:hover {
+        opacity: 1;
+    }
+
+    .link:hover::after {
+        transform: scaleX(1);
+    }
 `;

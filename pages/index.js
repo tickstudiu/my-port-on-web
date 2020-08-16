@@ -54,7 +54,7 @@ const Homepage = ({ t }) => {
         <section>
           <Row style={{ padding: "0 80px" }}>
             <Col span={12} className="text-center">
-              <img
+              <motion.img
                 src="/images/img1.jpg"
                 alt="my image"
                 style={{
@@ -64,6 +64,15 @@ const Homepage = ({ t }) => {
                   marginBottom: "23px",
                   border: "10px solid #fff",
                   objectFit: "cover",
+                }}
+                initial={{
+                  opacity: 0.4,
+                  scale: 0.9,
+                }}
+                whileHover={{
+                  opacity: 1,
+                  scale: 1.1,
+                  boxShadow: "0px 10px 10px rgba( 0, 0, 0, 0.2 )",
                 }}
               />
             </Col>
@@ -85,30 +94,95 @@ const Homepage = ({ t }) => {
                   </p>
                   <p className="display-2 text-sub mb-1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    do eiusmod tempor
+                    <span className="link">
+                      {" "}
+                      incididunt ut labore et dolore magna{" "}
+                    </span>
+                    aliqua. Ut enim ad{" "}
+                    <span className="link"> minim veniam </span>, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
                   </p>
 
                   <Row>
-                    <Col span={8}>
+                    <Col span={12}>
                       <ul>
-                        <li className="item">Reactjs</li>
-                        <li className="item">VueJs</li>
-                        <li className="item">Ionic</li>
+                        <motion.li
+                          className="item"
+                          whileHover={{
+                            x: "20px",
+                            originX: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 300,
+                            },
+                          }}
+                        >
+                          Reactjs
+                        </motion.li>
+                        <motion.li
+                          className="item"
+                          whileHover={{
+                            x: "20px",
+                            originX: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 300,
+                            },
+                          }}
+                        >
+                          VueJs
+                        </motion.li>
+                        <motion.li
+                          className="item"
+                          whileHover={{
+                            x: "20px",
+                            originX: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 300,
+                            },
+                          }}
+                        >
+                          Ionic
+                        </motion.li>
                       </ul>
                     </Col>
-                    <Col span={8}>
+                    <Col span={12}>
                       <ul>
-                        <li className="item">Angular</li>
-                        <li className="item">
+                      <motion.li
+                          className="item"
+                          whileHover={{
+                            x: "20px",
+                            originX: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 300,
+                            },
+                          }}
+                        >
+                          Angular
+                        </motion.li>
+                        <motion.li
+                          className="item"
+                          whileHover={{
+                            x: "20px",
+                            originX: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 300,
+                            },
+                          }}
+                        >
                           <Tooltip
                             title="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
                             placement="bottom"
+                            mouseEnterDelay="0.85"
                           >
                             NextJs
                           </Tooltip>
-                        </li>
+                        </motion.li>
                       </ul>
                     </Col>
                   </Row>
@@ -283,9 +357,7 @@ const Homepage = ({ t }) => {
                 <Tooltip
                   title={() => {
                     return (
-                      <a href="https://www.facebook.com/sliple.ness">
-                        Wanchalerm Suksawat
-                      </a>
+                      <a href="https://www.facebook.com/sliple.ness">Go!!</a>
                     );
                   }}
                   placement="bottom"
@@ -296,23 +368,26 @@ const Homepage = ({ t }) => {
               </motion.div>
             </Col>
           </Row>
-          <motion.div whileHover={{
-            y: -5,
-            rotateX: 20,
-            boxShadow: "0px 10px 10px rgba( 232, 123, 90, 0.2 )"
-          }} whileTap={{
-            scale: 0.9,
-            boxShadow: "none"
-          }}>
-          <Button
-            type="primary"
-            style={{
-              padding: "0px 45px"
+          <motion.div
+            whileHover={{
+              y: -5,
+              rotateX: 20,
+              boxShadow: "0px 10px 10px rgba( 232, 123, 90, 0.2 )",
             }}
-            size="large"
+            whileTap={{
+              scale: 0.9,
+              boxShadow: "none",
+            }}
           >
-            Get In Touch
-          </Button>
+            <Button
+              type="primary"
+              style={{
+                padding: "0px 45px",
+              }}
+              size="large"
+            >
+              Get In Touch
+            </Button>
           </motion.div>
         </section>
 
@@ -433,7 +508,8 @@ const Homepage = ({ t }) => {
           color: "#D0D4D5",
         }}
       >
-        Lorem ipsum dolor sit amet, consectetur
+        Build and design by{" "}
+        <span className="text-underline">Wanchalerm Suksawat</span>
       </Footer>
       <style jsx global>
         {globalStyles}
