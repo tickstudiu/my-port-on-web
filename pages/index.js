@@ -40,6 +40,7 @@ const { TabPane } = Tabs;
 }
 
 const Homepage = ({ t }) => {
+
   // Ref for our element
   const aboutRef = useRef(null);
   const educationRef = useRef(null);
@@ -47,7 +48,9 @@ const Homepage = ({ t }) => {
   const contactRef = useRef(null);
 
   // State for navigation bar
-  const [navPos, setNavPos] = useState("top");
+  const [navPos, setNavPos] = useState(0);
+  const [navState, setNavState] = useState(true);
+  const [navkey, setNavKey] = useState(null);
 
   // State for section
   const [meetAbout, setMeetAbout] = useState(false);
@@ -55,33 +58,62 @@ const Homepage = ({ t }) => {
   const [meetProject, setMeetProject] = useState(false);
   const [meetContact, setMeetContact] = useState(false);
 
-  useScrollPosition(({ prevPos, currPos }) => {
-    if((currPos.y*-1) + 400 > aboutRef.current.offsetTop && (currPos.y*-1) < aboutRef.current.offsetTop) {
+  const scrollToRef = (ref, key) => {
+    window.scrollTo(0, ref.current.offsetTop)
+
+    if(key === "1"){
       setMeetAbout(true)
+      setNavKey("1")
     }
 
-    if((currPos.y*-1) + 400 > educationRef.current.offsetTop && (currPos.y*-1) < educationRef.current.offsetTop) {
+    if(key === "2"){
       setMeetEducation(true)
+      setNavKey("2")
     }
 
-    if((currPos.y*-1) + 400 > projectRef.current.offsetTop && (currPos.y*-1) < projectRef.current.offsetTop) {
+    if(key === "3"){
       setMeetProject(true)
+      setNavKey("3")
     }
 
-    if((currPos.y*-1) + 400 > contactRef.current.offsetTop && (currPos.y*-1) < contactRef.current.offsetTop) {
+    if(key === "4"){
       setMeetContact(true)
+      setNavKey("4")
+    }
+  }   
+
+  // on Scrolling
+  useScrollPosition(({ prevPos, currPos }) => {
+
+    if((currPos.y*-1) + 450 > aboutRef.current.offsetTop && (currPos.y*-1) < aboutRef.current.offsetTop) {
+      setMeetAbout(true)
+      setNavKey("1")
     }
 
-    if (currPos.y == 0) {
-      // Set State when top
-      setNavPos("top");
-    } else if (prevPos.y < currPos.y && currPos.y != 0) {
+    if((currPos.y*-1) + 450 > educationRef.current.offsetTop && (currPos.y*-1) < educationRef.current.offsetTop) {
+      setMeetEducation(true)
+      setNavKey("2")
+    }
+
+    if((currPos.y*-1) + 450 > projectRef.current.offsetTop && (currPos.y*-1) < projectRef.current.offsetTop) {
+      setMeetProject(true)
+      setNavKey("3")
+    }
+
+    if((currPos.y*-1) + 450 > contactRef.current.offsetTop && (currPos.y*-1) < contactRef.current.offsetTop) {
+      setMeetContact(true)
+      setNavKey("4")
+    }
+
+    setNavPos(currPos)
+    if (prevPos.y < currPos.y) {
       // Set State when up
-      setNavPos("up");
+      setNavState(true);
     } else {
       // Set State when dpwn
-      setNavPos("down");
+      setNavState(false);
     }
+
   });
 
   // Animation
@@ -123,13 +155,9 @@ const Homepage = ({ t }) => {
   return (
     <div>
        {/* Header */}
-      <motion.div
+      <motion.div style={{ zIndex: 1000}}
         animate={{
-          y: navPos && navPos == "top" ? 0 : "-50px",
-          transition: {
-            type: "spring",
-            stiffness: 700,
-          },
+          opacity: navState ? 1 : 0,
         }}
       >
         <Header
@@ -141,7 +169,7 @@ const Homepage = ({ t }) => {
             top: "0px",
             width: "100%",
             padding: "0 120px",
-            zIndex: 10,
+            zIndex: 1000,
             boxShadow: "0 3px 6px rgba(0, 0, 0, 0.2)",
           }}
         >
@@ -156,28 +184,29 @@ const Homepage = ({ t }) => {
           <Menu
             mode="horizontal"
             style={{ background: "transparent", border: "none" }}
+            selectedKeys={navkey} defaultSelectedKeys={navkey}
           >
             <Menu.Item key="1" style={{ fontSize: "20px" }}>
               <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
                 delay: 0,
-              }}>Who am I?</motion.span>
+              }} onClick={() => scrollToRef(aboutRef, "1")}>Who am I?</motion.span>
             </Menu.Item>
             <Menu.Item key="2" style={{ fontSize: "20px" }}>
             <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
                 delay: 0.4,
-              }}>Where I learn?</motion.span>
+              }} onClick={() => scrollToRef(educationRef, "2")}>Where I learn?</motion.span>
               
             </Menu.Item>
             <Menu.Item key="3" style={{ fontSize: "20px" }}>
             <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
                 delay: 0.8,
-              }}>What i do?</motion.span>
+              }} onClick={() => scrollToRef(projectRef, "3")}>What i do?</motion.span>
               
             </Menu.Item>
             <Menu.Item key="4" style={{ fontSize: "20px" }}>
             <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
                 delay: 1,
-              }}>Touch Me!!</motion.span>
+              }} onClick={() => scrollToRef(contactRef, "4")}>Touch Me!!</motion.span>
               
             </Menu.Item>
           </Menu>
