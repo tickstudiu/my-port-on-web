@@ -165,15 +165,25 @@ export default css.global`
     .post-container .post .post-content {
         padding: 20px 20px 35px 20px;
         position: absolute;
+        bottom: -130px;
+        background: #fff;
+        transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+    }
+
+    .post-container .post #creator{
+        padding: 20px 20px 35px 20px;
+        position: absolute;
         bottom: -150px;
         background: #fff;
         transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
     }
 
+    .post-container .post #creator p,
     .post-container .post .post-content p{
         font-size: 18px;
     }
 
+    .post-container:hover .post #creator, 
     .post-container:hover .post .post-content {
         bottom: -20px;
     }

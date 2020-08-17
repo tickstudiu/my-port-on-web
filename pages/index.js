@@ -72,11 +72,32 @@ const Homepage = ({ t }) => {
   const projectData = [
     {
       image: "/images/project1.png",
-      title: "Mockup Mobile Application",
+      title: "Mockup Mobile App",
       description:
         "เป็นตัวอย่างโปรแกรมที่ได้ทำมนข่วงของการฝึกงานภาคฤดูร้อนก่อนได้จะจบจากมหาวิทยาลัย",
       link:
         "https://github.com/tickstudiu/design-soft-events-mobile-application?fbclid=IwAR22jwrgd_tdmTbRYpFjqqYuQ9rZuINgFb-z6yqvsdXK2MmLAK_xdaloOQo",
+      author: [
+        {
+          name: "วันเฉลิม",
+          link: "https://github.com/tickstudiu/",
+        },
+      ],
+      tag: [
+        {
+          name: "Adobe XD",
+          link: "https://www.adobe.com/sea/products/xd.html",
+        },
+      ],
+    },
+
+    {
+      image: "/images/project2.png",
+      title: "Mockup Mobile Appv2",
+      description:
+        "หลังจากจบการฝึกงานจึงอยากที่จะทำหน้าแอปให้เลยได้คิดที่จะออกแบบหน้าอีกครั้ง",
+      link:
+        "https://xd.adobe.com/view/9a522809-00a7-4047-8c2d-72e28d542c4a-cf01/",
       author: [
         {
           name: "วันเฉลิม",
@@ -847,7 +868,7 @@ const Homepage = ({ t }) => {
                                     }}
                                   >
                                     <li className="item">
-                                      <h1 className="display-2">AUTHOR</h1>
+                                      <h1 className="display-2">คนที่ทำ</h1>
                                     </li>
                                     {data.author.map((author) => {
                                       return (
@@ -876,7 +897,7 @@ const Homepage = ({ t }) => {
                                     }}
                                   >
                                     <li className="item">
-                                      <h1 className="display-2">TAGS</h1>
+                                      <h1 className="display-2">ทำกับอะไร</h1>
                                     </li>
                                     {data.tag.map((tag) => {
                                       return (
@@ -906,15 +927,12 @@ const Homepage = ({ t }) => {
                 <Col lg={6} sm={24}>
                   <motion.div className="post-container">
                     <Card bordered={false} className="post">
-                      <img src="/images/img1.jpg" alt="my image" />
+                      <img src="/images/creator.png" alt="my image" />
 
-                      <div className="post-content">
-                        <h1 className="display-2">
-                          Lorem ipsum dolor sit amet
-                        </h1>
+                      <div id="creator">
+                        <h1 className="display-2">My Portfolio Web Page</h1>
                         <p className="display-2 text-sub mb-1">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor
+                          แน่นอนครับผมมันก็คือเว็บที่เพื่อนได้ดูอยู่เลยครับผมมันสร้างจากความต้องการที่จะเอาผลงานไปแสดง
                         </p>
                         <Divider style={{ background: "#D0D4D5" }} />
                         <Row>
@@ -926,7 +944,7 @@ const Homepage = ({ t }) => {
                               }}
                             >
                               <li className="item">
-                                <h1 className="display-2">AUTHOR</h1>
+                                <h1 className="display-2">คนที่ทำ</h1>
                               </li>
                               <li
                                 className="item"
@@ -934,7 +952,9 @@ const Homepage = ({ t }) => {
                                   fontSize: "18px",
                                 }}
                               >
-                                Wanchalerm
+                                <a href="https://github.com/tickstudiu/" className="link">
+                                    วันเฉลิม
+                                  </a>
                               </li>
                             </ul>
                           </Col>
@@ -946,7 +966,7 @@ const Homepage = ({ t }) => {
                               }}
                             >
                               <li className="item">
-                                <h1 className="display-2">TAGS</h1>
+                                <h1 className="display-2">ทำกับอะไร</h1>
                               </li>
                               <li
                                 className="item"
@@ -954,7 +974,9 @@ const Homepage = ({ t }) => {
                                   fontSize: "18px",
                                 }}
                               >
-                                <span className="link">Angular</span>
+                                <a href="https://github.com/tickstudiu/" className="link">
+                                    NextJs
+                                  </a>
                               </li>
                               <li
                                 className="item"
@@ -962,7 +984,9 @@ const Homepage = ({ t }) => {
                                   fontSize: "18px",
                                 }}
                               >
-                                <span className="link">ReactJs</span>
+                                <a href="https://github.com/tickstudiu/" className="link">
+                                    Antd
+                                  </a>
                               </li>
                             </ul>
                           </Col>
