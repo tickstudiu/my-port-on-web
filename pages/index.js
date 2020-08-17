@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { useIntersection } from "react-use";
 import PropTypes from "prop-types";
 import { i18n, withTranslation } from "../i18n";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
@@ -42,15 +41,38 @@ const { TabPane } = Tabs;
 
 const Homepage = ({ t }) => {
   // Ref for our element
-  const sectionRef = useRef(null);
+  const aboutRef = useRef(null);
+  const educationRef = useRef(null);
+  const projectRef = useRef(null);
+  const contactRef = useRef(null);
 
   // State for navigation bar
   const [navPos, setNavPos] = useState("top");
 
-  useScrollPosition(({ prevPos, currPos }) => {
-    if (currPos.y == 0) {
-      console.log(sectionRef.current.offsetTop);
+  // State for section
+  const [meetAbout, setMeetAbout] = useState(false);
+  const [meetEducation, setMeetEducation] = useState(false);
+  const [meetProject, setMeetProject] = useState(false);
+  const [meetContact, setMeetContact] = useState(false);
 
+  useScrollPosition(({ prevPos, currPos }) => {
+    if((currPos.y*-1) + 400 > aboutRef.current.offsetTop && (currPos.y*-1) < aboutRef.current.offsetTop) {
+      setMeetAbout(true)
+    }
+
+    if((currPos.y*-1) + 400 > educationRef.current.offsetTop && (currPos.y*-1) < educationRef.current.offsetTop) {
+      setMeetEducation(true)
+    }
+
+    if((currPos.y*-1) + 400 > projectRef.current.offsetTop && (currPos.y*-1) < projectRef.current.offsetTop) {
+      setMeetProject(true)
+    }
+
+    if((currPos.y*-1) + 400 > contactRef.current.offsetTop && (currPos.y*-1) < contactRef.current.offsetTop) {
+      setMeetContact(true)
+    }
+
+    if (currPos.y == 0) {
       // Set State when top
       setNavPos("top");
     } else if (prevPos.y < currPos.y && currPos.y != 0) {
@@ -100,6 +122,7 @@ const Homepage = ({ t }) => {
 
   return (
     <div>
+       {/* Header */}
       <motion.div
         animate={{
           y: navPos && navPos == "top" ? 0 : "-50px",
@@ -163,6 +186,8 @@ const Homepage = ({ t }) => {
 
       <div className="container">
         <Content>
+
+          {/* Title */}
           <section>
             <Row style={{ padding: "0 80px" }}>
               <Col span={16}>
@@ -268,7 +293,19 @@ const Homepage = ({ t }) => {
               <Col span={8}></Col>
             </Row>
           </section>
-          <section ref={sectionRef}>
+          
+          {/* About Me */}
+          <motion.section ref={aboutRef} initial={{
+            opacity: 0,
+            y: 90
+          }} animate={{ 
+            opacity: meetAbout ? 1: 0, 
+            y: meetAbout ? 0: 90,
+            transition: {
+              duration: 0.5,
+              delay: 0.1,
+            }
+          }}>
             <Row style={{ padding: "0 80px" }}>
               <Col span={12} className="text-center">
                 <motion.img
@@ -409,9 +446,20 @@ const Homepage = ({ t }) => {
                 </div>
               </Col>
             </Row>
-          </section>
+          </motion.section>
 
-          <section>
+          {/* Education */}
+          <motion.section ref={educationRef} initial={{
+            opacity: 0,
+            y: 90
+          }} animate={{ 
+            opacity: meetEducation ? 1: 0, 
+            y: meetEducation ? 0: 90,
+            transition: {
+              duration: 0.5,
+              delay: 0.1,
+            }
+          }}>
             <div>
               <h1 className="text-code display-3">Where I learn?</h1>
               <Tabs
@@ -465,9 +513,20 @@ const Homepage = ({ t }) => {
                 </TabPane>
               </Tabs>
             </div>
-          </section>
+          </motion.section>
 
-          <section>
+          {/* Project */}
+          <motion.section ref={projectRef} initial={{
+            opacity: 0,
+            y: 90
+          }} animate={{ 
+            opacity: meetProject ? 1: 0, 
+            y: meetProject ? 0: 90,
+            transition: {
+              duration: 0.5,
+              delay: 0.1,
+            }
+          }}>
             <div>
               <Row>
                 <Col span={24}>
@@ -619,9 +678,20 @@ const Homepage = ({ t }) => {
                 </Col>
               </Row>
             </div>
-          </section>
+          </motion.section>
 
-          <section className="touch-me">
+          {/* Contact */}
+          <motion.section className="touch-me" ref={contactRef} initial={{
+            opacity: 0,
+            y: 90
+          }} animate={{ 
+            opacity: meetContact ? 1: 0, 
+            y: meetContact ? 0: 90,
+            transition: {
+              duration: 0.5,
+              delay: 0.1,
+            }
+          }}>
             <h2 className="display-2 text-primary">commodo consequat.</h2>
             <h1 className="text-code display-1">Touch Me!!</h1>
             <p className="content-touch-me lead text-muted text-center">
@@ -735,9 +805,20 @@ const Homepage = ({ t }) => {
                 Get In Touch
               </Button>
             </motion.div>
-          </section>
+          </motion.section>
 
-          <div style={{ position: "relative" }}>
+          {/* Footer Logo */}
+          <motion.div style={{ position: "relative" }} initial={{
+            opacity: 0,
+            y: 90
+          }} animate={{ 
+            opacity: meetContact ? 1: 0, 
+            y: meetContact ? 0: 90,
+            transition: {
+              duration: 0.5,
+              delay: 0.1,
+            }
+          }}>
             <motion.img
               src="/images/vue.png"
               alt="react"
@@ -844,8 +925,9 @@ const Homepage = ({ t }) => {
                 },
               }}
             />
-          </div>
+          </motion.div>
         </Content>
+
         <Footer
           style={{
             textAlign: "center",
@@ -857,6 +939,7 @@ const Homepage = ({ t }) => {
           Build and design by{" "}
           <span className="text-underline">Wanchalerm Suksawat</span>
         </Footer>
+        
         <style jsx global>
           {globalStyles}
         </style>
