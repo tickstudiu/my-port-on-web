@@ -158,6 +158,7 @@ export default css.global`
         height: 500px;
         object-fit: cover;
         transition: ease-in-out 600ms;
+        filter: grayscale(0%);
     }
 
     .post-container .post .post-content {
@@ -176,11 +177,12 @@ export default css.global`
         bottom: -20px;
     }
 
-    .post-container:hover .post {
-        margin-top: -20px;
+    .post-container:hover .post img {
+        filter: grayscale(80%) blur(2px);
     }
 
     .post-container:hover {
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        transform: translateY(-10px);
     }
 `;
