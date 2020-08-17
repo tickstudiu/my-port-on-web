@@ -111,6 +111,81 @@ const Homepage = ({ t }) => {
         },
       ],
     },
+
+    {
+      image: "/images/project3.png",
+      title: "1ST-G",
+      description:
+        "เป็นเกมแรกทีผมเสร็จและใช้เวลาเร็วที่สุดในการทำและศึกษาไปด้วย โดยใช้เวลไป 172 ชม",
+      link:
+        "https://tickstudiu.itch.io/1st-g",
+      author: [
+        {
+          name: "วันเฉลิม",
+          link: "https://github.com/tickstudiu/",
+        },
+      ],
+      tag: [
+        {
+          name: "Unity",
+          link: "https://store.unity.com/products/unity-pro?gclid=CjwKCAjw1ej5BRBhEiwAfHyh1OUv_L0f0NceTORRk4lHQaVzK2JyeVrd-abhgJEPS7b85s8KTnC5rBoCmMkQAvD_BwE",
+        },
+      ],
+    },
+
+    {
+      image: "/images/project4.png",
+      title: "Student Volunteer",
+      description:
+        "เป็นโปรเจคที่ได้ทำกับเพื่อนอีก 1 คน โดยผมทำหน้าที่ส่วนของหน้าบ้านทั้งหมดเลยครับ",
+      link:
+        "https://drive.google.com/drive/folders/114K2Kx_synxkD86U1NgMQii3tdz86LKs?usp=sharing",
+      author: [
+        {
+          name: "วันเฉลิม",
+          link: "https://github.com/tickstudiu/",
+        },
+        {
+          name: "กิตตินันท์",
+          link: "https://github.com/ggbandit",
+        },
+      ],
+      tag: [
+        {
+          name: "ReactJs",
+          link: "https://reactjs.org/",
+        },
+        {
+          name: "Nodejs",
+          link: "https://nodejs.org/en/",
+        },
+      ],
+    },
+
+    {
+      image: "/images/project5.jpg",
+      title: "Soft Event Application",
+      description:
+        "ได้เป็นหัวหน้าทีมและมีเพื่อนอีก 4 คน ที่ทำด้วยกัน โดยผมทำหน้าที่ส่วนใหญ่ของ App",
+      link:
+        "https://drive.google.com/file/d/14XowXxJyU7EIYcGpo-MH946Z3Tr90upe/view?usp=sharing",
+      author: [
+        {
+          name: "วันเฉลิม",
+          link: "https://github.com/tickstudiu/",
+        },
+      ],
+      tag: [
+        {
+          name: "AngularJs",
+          link: "https://angularjs.org/",
+        },
+        {
+          name: "Ionic",
+          link: "https://ionicframework.com/",
+        },
+      ],
+    },
   ];
 
   const scrollToRef = (ref, key) => {
