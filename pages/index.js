@@ -23,6 +23,8 @@ import { motion } from "framer-motion";
 
 import globalStyles from "../public/styles/global.js";
 
+import useWindowSize from "../services/useWindowSize";
+
 import "../public/styles/antd.less";
 
 const { Header, Footer, Content } = Layout;
@@ -57,6 +59,9 @@ const Homepage = ({ t }) => {
   const [meetEducation, setMeetEducation] = useState(false);
   const [meetProject, setMeetProject] = useState(false);
   const [meetContact, setMeetContact] = useState(false);
+
+  // Windown Size
+  const wSize = useWindowSize();
 
   const scrollToRef = (ref, key) => {
     window.scrollTo(0, ref.current.offsetTop)
@@ -335,19 +340,12 @@ const Homepage = ({ t }) => {
               delay: 0.1,
             }
           }}>
-            <Row style={{ padding: "0 80px" }}>
-              <Col span={12} className="text-center">
+            <Row className="about-container">
+              <Col lg={12} sm={24}>
                 <motion.img
                   src="/images/img1.jpg"
                   alt="my image"
-                  style={{
-                    width: "475px",
-                    height: "475px",
-                    borderRadius: "50%",
-                    marginBottom: "23px",
-                    border: "10px solid #fff",
-                    objectFit: "cover",
-                  }}
+                  className="profile-image"
                   initial={{
                     opacity: 0.8,
                     scale: 0.9,
@@ -361,7 +359,7 @@ const Homepage = ({ t }) => {
                   }}
                 />
               </Col>
-              <Col span={12}>
+              <Col lg={12} sm={24}>
                 <div
                   style={{
                     display: "flex",
@@ -490,19 +488,20 @@ const Homepage = ({ t }) => {
             }
           }}>
             <div>
-              <h1 className="text-code display-3">Where I learn?</h1>
+              <h1 className="text-code display-3 text-center-sm">Where I learn?</h1>
               <Tabs
                 defaultActiveKey="1"
-                tabPosition="left"
-                style={{ width: "829px" }}
+                tabPosition={wSize.width < 990 ? "top": "left"}
+                className="tab-container"
               >
                 <TabPane tab="2015" key="1">
-                  <p className="display-2 mb-1">
+                  <p className="display-2 mb-1 tab-header">
                     มหาลัย{" "}
                     <a className="link" href="https://www.psu.ac.th/th/">
                       @มหาวิทยาลัยสงขลานครินทร์
                     </a>
                   </p>
+
                   <ul>
                     <li>
                       <p
@@ -567,8 +566,8 @@ const Homepage = ({ t }) => {
                   </h1>
                 </Col>
               </Row>
-              <Row style={{ padding: "0 80px" }}>
-                <Col lg={6}>
+              <Row className="project-container">
+                <Col lg={6} sm={24}>
                   <motion.div className="post-container">
                     <Card bordered={false} className="post">
                       <img src="/images/img1.jpg" alt="my image" />
@@ -637,7 +636,7 @@ const Homepage = ({ t }) => {
                   </motion.div>
                 </Col>
 
-                <Col lg={6}>
+                <Col lg={6} sm={24}>
                   <motion.div className="post-container">
                     <Card bordered={false} className="post">
                       <img src="/images/img1.jpg" alt="my image" />
@@ -837,7 +836,8 @@ const Homepage = ({ t }) => {
           </motion.section>
 
           {/* Footer Logo */}
-          <motion.div style={{ position: "relative" }} initial={{
+          <motion.div className="footer-logo"
+          initial={{
             opacity: 0,
             y: 90
           }} animate={{ 

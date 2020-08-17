@@ -185,4 +185,70 @@ export default css.global`
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         transform: translateY(-10px);
     }
+
+    .footer-logo {
+        position: relative;
+    }
+
+    .project-container {
+        padding: 0 80px;
+    }
+
+    .tab-container {
+        width: 829px;
+    }
+
+    .about-container{
+        padding: 0 80px;
+    }
+
+    .profile-image{
+        width: 475px;
+        height: 475px;
+        border-radius: 50%;
+        margin-bottom: 23px;
+        border: 10px solid #fff;
+        object-fit: cover;
+        text-align: center;
+    }
+
+    // Moblie view
+    @media screen and (max-width: 576px) {
+        .container {
+            padding: 15px 25px;
+        }
+
+        section {       
+            margin: 0 0;
+        }
+
+        .footer-logo {
+            display: none;
+        }
+
+        .project-container {
+            padding: 0 0;
+        }
+
+        .about-container{
+            padding: 0 0;
+        }
+
+        .tab-container {
+            width: auto;
+        }
+
+        .text-center-sm {
+            text-align: center;
+        }
+
+        .tab-header a{
+            display: block;
+        }
+
+        .profile-image{
+            width: 300px;
+            height: 300px;
+        }
+    }
 `;
