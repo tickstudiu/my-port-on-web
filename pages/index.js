@@ -183,19 +183,7 @@ const Homepage = ({ t }) => {
           opacity: navState ? 1 : 0,
         }}
       >
-        <Header
-          style={{
-            background: "#f6f6f6",
-            display: "flex",
-            justifyContent: "space-between",
-            position: "fixed",
-            top: "0px",
-            width: "100%",
-            padding: "0 120px",
-            zIndex: 1000,
-            boxShadow: "0 3px 6px rgba(0, 0, 0, 0.2)",
-          }}
-        >
+        <Header className="header">
           <motion.h1
             style={{
               fontSize: "20px",
@@ -221,13 +209,7 @@ const Homepage = ({ t }) => {
             className="text-center"
           >
             WANCHALERM{" "}
-            <motion.span
-              animate={{
-                rotate: [0, 0, 270, 270, 0]
-              }}
-            >
-              <CaretLeftOutlined onClick={() => setShowDrawer(!showDrawer)} />
-            </motion.span>
+            <CaretLeftOutlined onClick={() => setShowDrawer(!showDrawer)} />
           </motion.h1>
 
           <Drawer
@@ -369,8 +351,10 @@ const Homepage = ({ t }) => {
       <div className="container">
         <Content>
           {/* Title */}
-          <section>
-            <Row style={{ padding: "0 80px" }}>
+          <section style={{
+            justifyContent: wSize && wSize.width < 576 ? "flex-end" : "center"
+          }}>
+            <Row className="title-container">
               <Col span={16}>
                 <motion.h3
                   style={{
@@ -388,13 +372,9 @@ const Homepage = ({ t }) => {
                 >
                   Hi, my name is
                 </motion.h3>
+
                 <motion.h1
-                  style={{
-                    fontSize: 80,
-                    fontWeight: "bold",
-                    marginBottom: "-20px",
-                    marginTop: "-20px",
-                  }}
+                  className="text-title"
                   variants={FadeUpAnimation}
                   initial="hidden"
                   animate="show"
@@ -410,6 +390,7 @@ const Homepage = ({ t }) => {
                     fontWeight: "bold",
                     marginBottom: "114px",
                     color: "#8A898E",
+                    display: wSize && wSize.width < 576 ? "none" : "",
                   }}
                   variants={FadeUpAnimation}
                   initial="hidden"
@@ -427,6 +408,10 @@ const Homepage = ({ t }) => {
                   animate="show"
                   transition={{
                     delay: 1,
+                  }}
+
+                  style={{
+                    display: wSize && wSize.width < 576 ? "none" : "",
                   }}
                 >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

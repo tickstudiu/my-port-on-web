@@ -194,6 +194,10 @@ export default css.global`
         padding: 0 80px;
     }
 
+    .title-container{
+        padding: 0 80px;
+    }
+
     .tab-container {
         width: 829px;
     }
@@ -212,8 +216,35 @@ export default css.global`
         text-align: center;
     }
 
+    .header {
+        background: #f6f6f6;
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        padding: 0 120px;
+        z-index: 1000;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .text-title {
+        font-size: 80px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
     // Moblie view
     @media screen and (max-width: 576px) {
+        .text-title {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 23px;
+            margin-top: -20px;
+        }
+
         .container {
             padding: 15px 25px;
         }
@@ -228,6 +259,11 @@ export default css.global`
 
         .project-container {
             padding: 0 0;
+        }
+
+        .title-container{
+            padding: 0 0;
+            transform: translateY(-60px);
         }
 
         .about-container{
