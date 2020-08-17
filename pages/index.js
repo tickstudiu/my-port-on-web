@@ -41,11 +41,16 @@ const { TabPane } = Tabs;
 }
 
 const Homepage = ({ t }) => {
+  // Ref for our element
+  const sectionRef = useRef(null);
+
   // State for navigation bar
   const [navPos, setNavPos] = useState("top");
 
   useScrollPosition(({ prevPos, currPos }) => {
     if (currPos.y == 0) {
+      console.log(sectionRef.current.offsetTop);
+
       // Set State when top
       setNavPos("top");
     } else if (prevPos.y < currPos.y && currPos.y != 0) {
@@ -57,19 +62,18 @@ const Homepage = ({ t }) => {
     }
   });
 
-  // Ref for our element
-  const sectionRef = useRef(null);
-  // All the ref to be observed
-  const intersection = useIntersection(sectionRef, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.2,
-  });
-
-  // Animation Fade
-  const fadeInAndOut = {
-    y: intersection && intersection.intersectionRatio < 0.23 ? 40 : 0,
-    opacity: intersection && intersection.intersectionRatio < 0.23 ? 0 : 1,
+  // Animation
+  // ---
+  // Fade up Animation
+  const FadeUpAnimation = {
+    hidden: {
+      y: 15,
+      opacity: 0,
+    },
+    show: {
+      y: 0,
+      opacity: 1,
+    },
   };
 
   return (
@@ -93,6 +97,7 @@ const Homepage = ({ t }) => {
             width: "100%",
             padding: "0 120px",
             zIndex: 10,
+            boxShadow: "0 3px 6px rgba(0, 0, 0, 0.2)",
           }}
         >
           <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>
@@ -123,45 +128,77 @@ const Homepage = ({ t }) => {
           <section>
             <Row style={{ padding: "0 80px" }}>
               <Col span={16}>
-                <h3
+                <motion.h3
                   style={{
                     fontSize: 30,
                     fontWeight: "bold",
                     margin: "0",
                     color: "#B8A48C",
                   }}
+                  variants={FadeUpAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 0,
+                  }}
                 >
                   Hi, my name is
-                </h3>
-                <h1
+                </motion.h3>
+                <motion.h1
                   style={{
                     fontSize: 80,
                     fontWeight: "bold",
                     marginBottom: "-20px",
                     marginTop: "-20px",
                   }}
+                  variants={FadeUpAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 0.4,
+                  }}
                 >
                   Wanchalerm Suksawat
-                </h1>
-                <h1
+                </motion.h1>
+                <motion.h1
                   style={{
                     fontSize: 70,
                     fontWeight: "bold",
                     marginBottom: "114px",
                     color: "#8A898E",
                   }}
+                  variants={FadeUpAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 0.8,
+                  }}
                 >
                   And in love with coding
-                </h1>
-                <p className="lead text-muted">
+                </motion.h1>
+                <motion.p
+                  className="lead text-muted"
+                  variants={FadeUpAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 1,
+                  }}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                </motion.p>
                 <motion.div
                   style={{
                     width: "234px",
+                  }}
+                  variants={FadeUpAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 1,
                   }}
                   whileHover={{
                     y: -5,
@@ -193,7 +230,7 @@ const Homepage = ({ t }) => {
               <Col span={8}></Col>
             </Row>
           </section>
-          <section>
+          <section ref={sectionRef}>
             <Row style={{ padding: "0 80px" }}>
               <Col span={12} className="text-center">
                 <motion.img
