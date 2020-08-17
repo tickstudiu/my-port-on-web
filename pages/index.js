@@ -12,11 +12,14 @@ import {
   Tabs,
   Tooltip,
   Menu,
+  BackTop,
+  Drawer,
 } from "antd";
 import {
   MailOutlined,
   PhoneOutlined,
   FacebookOutlined,
+  CaretLeftOutlined,
 } from "@ant-design/icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -42,7 +45,6 @@ const { TabPane } = Tabs;
 }
 
 const Homepage = ({ t }) => {
-
   // Ref for our element
   const aboutRef = useRef(null);
   const educationRef = useRef(null);
@@ -60,57 +62,71 @@ const Homepage = ({ t }) => {
   const [meetProject, setMeetProject] = useState(false);
   const [meetContact, setMeetContact] = useState(false);
 
+  // State for modal
+  const [showDrawer, setShowDrawer] = useState(false);
+
   // Windown Size
   const wSize = useWindowSize();
 
   const scrollToRef = (ref, key) => {
-    window.scrollTo(0, ref.current.offsetTop)
+    window.scrollTo(0, ref.current.offsetTop);
 
-    if(key === "1"){
-      setMeetAbout(true)
-      setNavKey("1")
+    if (key === "1") {
+      setMeetAbout(true);
+      setNavKey("1");
     }
 
-    if(key === "2"){
-      setMeetEducation(true)
-      setNavKey("2")
+    if (key === "2") {
+      setMeetEducation(true);
+      setNavKey("2");
     }
 
-    if(key === "3"){
-      setMeetProject(true)
-      setNavKey("3")
+    if (key === "3") {
+      setMeetProject(true);
+      setNavKey("3");
     }
 
-    if(key === "4"){
-      setMeetContact(true)
-      setNavKey("4")
+    if (key === "4") {
+      setMeetContact(true);
+      setNavKey("4");
     }
-  }   
+  };
 
   // on Scrolling
   useScrollPosition(({ prevPos, currPos }) => {
-
-    if((currPos.y*-1) + 450 > aboutRef.current.offsetTop && (currPos.y*-1) < aboutRef.current.offsetTop) {
-      setMeetAbout(true)
-      setNavKey("1")
+    if (
+      currPos.y * -1 + 450 > aboutRef.current.offsetTop &&
+      currPos.y * -1 < aboutRef.current.offsetTop
+    ) {
+      setMeetAbout(true);
+      setNavKey("1");
     }
 
-    if((currPos.y*-1) + 450 > educationRef.current.offsetTop && (currPos.y*-1) < educationRef.current.offsetTop) {
-      setMeetEducation(true)
-      setNavKey("2")
+    if (
+      currPos.y * -1 + 450 > educationRef.current.offsetTop &&
+      currPos.y * -1 < educationRef.current.offsetTop
+    ) {
+      setMeetEducation(true);
+      setNavKey("2");
     }
 
-    if((currPos.y*-1) + 450 > projectRef.current.offsetTop && (currPos.y*-1) < projectRef.current.offsetTop) {
-      setMeetProject(true)
-      setNavKey("3")
+    if (
+      currPos.y * -1 + 450 > projectRef.current.offsetTop &&
+      currPos.y * -1 < projectRef.current.offsetTop
+    ) {
+      setMeetProject(true);
+      setNavKey("3");
     }
 
-    if((currPos.y*-1) + 450 > contactRef.current.offsetTop && (currPos.y*-1) < contactRef.current.offsetTop) {
-      setMeetContact(true)
-      setNavKey("4")
+    if (
+      currPos.y * -1 + 450 > contactRef.current.offsetTop &&
+      currPos.y * -1 < contactRef.current.offsetTop
+    ) {
+      setMeetContact(true);
+      setNavKey("4");
     }
 
-    setNavPos(currPos)
+    setNavPos(currPos);
     if (prevPos.y < currPos.y) {
       // Set State when up
       setNavState(true);
@@ -118,7 +134,6 @@ const Homepage = ({ t }) => {
       // Set State when dpwn
       setNavState(false);
     }
-
   });
 
   // Animation
@@ -159,8 +174,11 @@ const Homepage = ({ t }) => {
 
   return (
     <div>
-       {/* Header */}
-      <motion.div style={{ zIndex: 1000}}
+      {/* Header */}
+      <BackTop />
+
+      <motion.div
+        style={{ zIndex: 1000 }}
         animate={{
           opacity: navState ? 1 : 0,
         }}
@@ -179,40 +197,170 @@ const Homepage = ({ t }) => {
           }}
         >
           <motion.h1
-            style={{ fontSize: "20px", fontWeight: "bold" }}
+            style={{
+              fontSize: "20px",
+              fontWeight: "bold",
+              display: wSize && wSize.width < 576 ? "none" : "",
+            }}
             variants={FadeInAnimation}
             initial="hidden"
             animate="show"
           >
             WANCHALERM SUKSWAT
           </motion.h1>
+
+          <motion.h1
+            style={{
+              fontSize: "20px",
+              fontWeight: "bold",
+              display: wSize && wSize.width < 576 ? "" : "none",
+            }}
+            variants={FadeInAnimation}
+            initial="hidden"
+            animate="show"
+            className="text-center"
+          >
+            WANCHALERM{" "}
+            <motion.span
+              animate={{
+                rotate: [0, 0, 270, 270, 0]
+              }}
+            >
+              <CaretLeftOutlined onClick={() => setShowDrawer(!showDrawer)} />
+            </motion.span>
+          </motion.h1>
+
+          <Drawer
+            placement="right"
+            closable={false}
+            onClose={() => setShowDrawer(false)}
+            visible={showDrawer}
+          >
+            <Menu
+              mode="inline"
+              style={{
+                background: "transparent",
+                border: "none",
+              }}
+              selectedKeys={navkey}
+              defaultSelectedKeys={navkey}
+            >
+              <Menu.Item key="1" style={{ fontSize: "20px" }}>
+                <motion.span
+                  variants={FadeDownAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 0,
+                  }}
+                  onClick={() => scrollToRef(aboutRef, "1")}
+                >
+                  Who am I?
+                </motion.span>
+              </Menu.Item>
+              <Menu.Item key="2" style={{ fontSize: "20px" }}>
+                <motion.span
+                  variants={FadeDownAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 0.4,
+                  }}
+                  onClick={() => scrollToRef(educationRef, "2")}
+                >
+                  Where I learn?
+                </motion.span>
+              </Menu.Item>
+              <Menu.Item key="3" style={{ fontSize: "20px" }}>
+                <motion.span
+                  variants={FadeDownAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 0.8,
+                  }}
+                  onClick={() => scrollToRef(projectRef, "3")}
+                >
+                  What i do?
+                </motion.span>
+              </Menu.Item>
+              <Menu.Item key="4" style={{ fontSize: "20px" }}>
+                <motion.span
+                  variants={FadeDownAnimation}
+                  initial="hidden"
+                  animate="show"
+                  transition={{
+                    delay: 1,
+                  }}
+                  onClick={() => scrollToRef(contactRef, "4")}
+                >
+                  Touch Me!!
+                </motion.span>
+              </Menu.Item>
+            </Menu>
+          </Drawer>
+
           <Menu
             mode="horizontal"
-            style={{ background: "transparent", border: "none" }}
-            selectedKeys={navkey} defaultSelectedKeys={navkey}
+            style={{
+              background: "transparent",
+              border: "none",
+              display: wSize && wSize.width < 576 ? "none" : "",
+            }}
+            selectedKeys={navkey}
+            defaultSelectedKeys={navkey}
           >
             <Menu.Item key="1" style={{ fontSize: "20px" }}>
-              <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
-                delay: 0,
-              }} onClick={() => scrollToRef(aboutRef, "1")}>Who am I?</motion.span>
+              <motion.span
+                variants={FadeDownAnimation}
+                initial="hidden"
+                animate="show"
+                transition={{
+                  delay: 0,
+                }}
+                onClick={() => scrollToRef(aboutRef, "1")}
+              >
+                Who am I?
+              </motion.span>
             </Menu.Item>
             <Menu.Item key="2" style={{ fontSize: "20px" }}>
-            <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
-                delay: 0.4,
-              }} onClick={() => scrollToRef(educationRef, "2")}>Where I learn?</motion.span>
-              
+              <motion.span
+                variants={FadeDownAnimation}
+                initial="hidden"
+                animate="show"
+                transition={{
+                  delay: 0.4,
+                }}
+                onClick={() => scrollToRef(educationRef, "2")}
+              >
+                Where I learn?
+              </motion.span>
             </Menu.Item>
             <Menu.Item key="3" style={{ fontSize: "20px" }}>
-            <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
-                delay: 0.8,
-              }} onClick={() => scrollToRef(projectRef, "3")}>What i do?</motion.span>
-              
+              <motion.span
+                variants={FadeDownAnimation}
+                initial="hidden"
+                animate="show"
+                transition={{
+                  delay: 0.8,
+                }}
+                onClick={() => scrollToRef(projectRef, "3")}
+              >
+                What i do?
+              </motion.span>
             </Menu.Item>
             <Menu.Item key="4" style={{ fontSize: "20px" }}>
-            <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
-                delay: 1,
-              }} onClick={() => scrollToRef(contactRef, "4")}>Touch Me!!</motion.span>
-              
+              <motion.span
+                variants={FadeDownAnimation}
+                initial="hidden"
+                animate="show"
+                transition={{
+                  delay: 1,
+                }}
+                onClick={() => scrollToRef(contactRef, "4")}
+              >
+                Touch Me!!
+              </motion.span>
             </Menu.Item>
           </Menu>
         </Header>
@@ -220,7 +368,6 @@ const Homepage = ({ t }) => {
 
       <div className="container">
         <Content>
-
           {/* Title */}
           <section>
             <Row style={{ padding: "0 80px" }}>
@@ -327,19 +474,23 @@ const Homepage = ({ t }) => {
               <Col span={8}></Col>
             </Row>
           </section>
-          
+
           {/* About Me */}
-          <motion.section ref={aboutRef} initial={{
-            opacity: 0,
-            y: 90
-          }} animate={{ 
-            opacity: meetAbout ? 1: 0, 
-            y: meetAbout ? 0: 90,
-            transition: {
-              duration: 0.5,
-              delay: 0.1,
-            }
-          }}>
+          <motion.section
+            ref={aboutRef}
+            initial={{
+              opacity: 0,
+              y: 90,
+            }}
+            animate={{
+              opacity: meetAbout ? 1 : 0,
+              y: meetAbout ? 0 : 90,
+              transition: {
+                duration: 0.5,
+                delay: 0.1,
+              },
+            }}
+          >
             <Row className="about-container">
               <Col lg={12} sm={24}>
                 <motion.img
@@ -476,22 +627,28 @@ const Homepage = ({ t }) => {
           </motion.section>
 
           {/* Education */}
-          <motion.section ref={educationRef} initial={{
-            opacity: 0,
-            y: 90
-          }} animate={{ 
-            opacity: meetEducation ? 1: 0, 
-            y: meetEducation ? 0: 90,
-            transition: {
-              duration: 0.5,
-              delay: 0.1,
-            }
-          }}>
+          <motion.section
+            ref={educationRef}
+            initial={{
+              opacity: 0,
+              y: 90,
+            }}
+            animate={{
+              opacity: meetEducation ? 1 : 0,
+              y: meetEducation ? 0 : 90,
+              transition: {
+                duration: 0.5,
+                delay: 0.1,
+              },
+            }}
+          >
             <div>
-              <h1 className="text-code display-3 text-center-sm">Where I learn?</h1>
+              <h1 className="text-code display-3 text-center-sm">
+                Where I learn?
+              </h1>
               <Tabs
                 defaultActiveKey="1"
-                tabPosition={wSize.width < 990 ? "top": "left"}
+                tabPosition={wSize.width < 990 ? "top" : "left"}
                 className="tab-container"
               >
                 <TabPane tab="2015" key="1">
@@ -544,17 +701,21 @@ const Homepage = ({ t }) => {
           </motion.section>
 
           {/* Project */}
-          <motion.section ref={projectRef} initial={{
-            opacity: 0,
-            y: 90
-          }} animate={{ 
-            opacity: meetProject ? 1: 0, 
-            y: meetProject ? 0: 90,
-            transition: {
-              duration: 0.5,
-              delay: 0.1,
-            }
-          }}>
+          <motion.section
+            ref={projectRef}
+            initial={{
+              opacity: 0,
+              y: 90,
+            }}
+            animate={{
+              opacity: meetProject ? 1 : 0,
+              y: meetProject ? 0 : 90,
+              transition: {
+                duration: 0.5,
+                delay: 0.1,
+              },
+            }}
+          >
             <div>
               <Row>
                 <Col span={24}>
@@ -709,17 +870,22 @@ const Homepage = ({ t }) => {
           </motion.section>
 
           {/* Contact */}
-          <motion.section className="touch-me" ref={contactRef} initial={{
-            opacity: 0,
-            y: 90
-          }} animate={{ 
-            opacity: meetContact ? 1: 0, 
-            y: meetContact ? 0: 90,
-            transition: {
-              duration: 0.5,
-              delay: 0.1,
-            }
-          }}>
+          <motion.section
+            className="touch-me"
+            ref={contactRef}
+            initial={{
+              opacity: 0,
+              y: 90,
+            }}
+            animate={{
+              opacity: meetContact ? 1 : 0,
+              y: meetContact ? 0 : 90,
+              transition: {
+                duration: 0.5,
+                delay: 0.1,
+              },
+            }}
+          >
             <h2 className="display-2 text-primary">commodo consequat.</h2>
             <h1 className="text-code display-1">Touch Me!!</h1>
             <p className="content-touch-me lead text-muted text-center">
@@ -836,18 +1002,21 @@ const Homepage = ({ t }) => {
           </motion.section>
 
           {/* Footer Logo */}
-          <motion.div className="footer-logo"
-          initial={{
-            opacity: 0,
-            y: 90
-          }} animate={{ 
-            opacity: meetContact ? 1: 0, 
-            y: meetContact ? 0: 90,
-            transition: {
-              duration: 0.5,
-              delay: 0.1,
-            }
-          }}>
+          <motion.div
+            className="footer-logo"
+            initial={{
+              opacity: 0,
+              y: 90,
+            }}
+            animate={{
+              opacity: meetContact ? 1 : 0,
+              y: meetContact ? 0 : 90,
+              transition: {
+                duration: 0.5,
+                delay: 0.1,
+              },
+            }}
+          >
             <motion.img
               src="/images/vue.png"
               alt="react"
@@ -968,7 +1137,7 @@ const Homepage = ({ t }) => {
           Build and design by{" "}
           <span className="text-underline">Wanchalerm Suksawat</span>
         </Footer>
-        
+
         <style jsx global>
           {globalStyles}
         </style>
