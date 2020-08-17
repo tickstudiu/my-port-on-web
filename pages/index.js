@@ -64,7 +64,7 @@ const Homepage = ({ t }) => {
 
   // Animation
   // ---
-  // Fade up Animation
+  // Fade up animation
   const FadeUpAnimation = {
     hidden: {
       y: 15,
@@ -72,6 +72,28 @@ const Homepage = ({ t }) => {
     },
     show: {
       y: 0,
+      opacity: 1,
+    },
+  };
+
+  // Fade down animation
+  const FadeDownAnimation = {
+    hidden: {
+      y: -15,
+      opacity: 0,
+    },
+    show: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
+  // Fade in animation
+  const FadeInAnimation = {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
       opacity: 1,
     },
   };
@@ -100,24 +122,40 @@ const Homepage = ({ t }) => {
             boxShadow: "0 3px 6px rgba(0, 0, 0, 0.2)",
           }}
         >
-          <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>
+          <motion.h1
+            style={{ fontSize: "20px", fontWeight: "bold" }}
+            variants={FadeInAnimation}
+            initial="hidden"
+            animate="show"
+          >
             WANCHALERM SUKSWAT
-          </h1>
+          </motion.h1>
           <Menu
             mode="horizontal"
             style={{ background: "transparent", border: "none" }}
           >
             <Menu.Item key="1" style={{ fontSize: "20px" }}>
-              Who am I?
+              <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
+                delay: 0,
+              }}>Who am I?</motion.span>
             </Menu.Item>
             <Menu.Item key="2" style={{ fontSize: "20px" }}>
-              Where I learn?
+            <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
+                delay: 0.4,
+              }}>Where I learn?</motion.span>
+              
             </Menu.Item>
             <Menu.Item key="3" style={{ fontSize: "20px" }}>
-              What i do?
+            <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
+                delay: 0.8,
+              }}>What i do?</motion.span>
+              
             </Menu.Item>
             <Menu.Item key="4" style={{ fontSize: "20px" }}>
-              Touch Me!!
+            <motion.span variants={FadeDownAnimation} initial="hidden" animate="show" transition={{
+                delay: 1,
+              }}>Touch Me!!</motion.span>
+              
             </Menu.Item>
           </Menu>
         </Header>
