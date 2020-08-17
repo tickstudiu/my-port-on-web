@@ -53,7 +53,6 @@ export default css.global`
     }
 
     .container {
-        margin: 44px;
         padding: 48px 70px;
         background-color: #f6f6f6;
     }
@@ -138,5 +137,50 @@ export default css.global`
 
     .link:hover::after {
         transform: scaleX(1);
+    }
+
+    .post-container {
+        margin: 10px;
+        overflow: hidden;
+        transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+    }
+
+    .post-container .post {
+        background: transparent;
+        height: 500px;
+        width: 100%;
+        position: relative;
+        transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+    }
+
+    .post-container .post img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        transition: ease-in-out 600ms;
+    }
+
+    .post-container .post .post-content {
+        padding: 20px 20px 35px 20px;
+        position: absolute;
+        bottom: -150px;
+        background: #fff;
+        transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+    }
+
+    .post-container .post .post-content p{
+        font-size: 18px;
+    }
+
+    .post-container:hover .post .post-content {
+        bottom: -20px;
+    }
+
+    .post-container:hover .post {
+        margin-top: -20px;
+    }
+
+    .post-container:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     }
 `;
