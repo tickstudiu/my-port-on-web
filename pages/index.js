@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useIntersection } from "react-use";
 import PropTypes from "prop-types";
 import { i18n, withTranslation } from "../i18n";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import {
   Layout,
   Button,
@@ -28,10 +29,6 @@ import "../public/styles/antd.less";
 const { Header, Footer, Content } = Layout;
 const { TabPane } = Tabs;
 
-const Project = styled(Card)`
-  background: transparent;
-`;
-
 {
   /* <Button
           type="button"
@@ -44,6 +41,22 @@ const Project = styled(Card)`
 }
 
 const Homepage = ({ t }) => {
+  // State for navigation bar
+  const [navPos, setNavPos] = useState("top");
+
+  useScrollPosition(({ prevPos, currPos }) => {
+    if (currPos.y == 0) {
+      // Set State when top
+      setNavPos("top");
+    } else if (prevPos.y < currPos.y && currPos.y != 0) {
+      // Set State when up
+      setNavPos("up");
+    } else {
+      // Set State when dpwn
+      setNavPos("down");
+    }
+  });
+
   // Ref for our element
   const sectionRef = useRef(null);
   // All the ref to be observed
@@ -61,39 +74,50 @@ const Homepage = ({ t }) => {
 
   return (
     <div>
-      <Header
-        style={{
-          background: "#f6f6f6",
-          display: "flex",
-          justifyContent: "space-between",
-          position: "fixed",
-          top: "0px",
-          width: "100%",
-          padding: "0 120px",
-          zIndex: 10,
+      <motion.div
+        animate={{
+          y: navPos && navPos == "top" ? 0 : "-50px",
+          transition: {
+            type: "spring",
+            stiffness: 700,
+          },
         }}
       >
-        <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>
-          WANCHALERM SUKSWAT
-        </h1>
-        <Menu
-          mode="horizontal"
-          style={{ background: "transparent", border: "none" }}
+        <Header
+          style={{
+            background: "#f6f6f6",
+            display: "flex",
+            justifyContent: "space-between",
+            position: "fixed",
+            top: "0px",
+            width: "100%",
+            padding: "0 120px",
+            zIndex: 10,
+          }}
         >
-          <Menu.Item key="1" style={{ fontSize: "20px" }}>
-            Who am I?
-          </Menu.Item>
-          <Menu.Item key="2" style={{ fontSize: "20px" }}>
-            Where I learn?
-          </Menu.Item>
-          <Menu.Item key="3" style={{ fontSize: "20px" }}>
-            What i do?
-          </Menu.Item>
-          <Menu.Item key="4" style={{ fontSize: "20px" }}>
-            Touch Me!!
-          </Menu.Item>
-        </Menu>
-      </Header>
+          <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>
+            WANCHALERM SUKSWAT
+          </h1>
+          <Menu
+            mode="horizontal"
+            style={{ background: "transparent", border: "none" }}
+          >
+            <Menu.Item key="1" style={{ fontSize: "20px" }}>
+              Who am I?
+            </Menu.Item>
+            <Menu.Item key="2" style={{ fontSize: "20px" }}>
+              Where I learn?
+            </Menu.Item>
+            <Menu.Item key="3" style={{ fontSize: "20px" }}>
+              What i do?
+            </Menu.Item>
+            <Menu.Item key="4" style={{ fontSize: "20px" }}>
+              Touch Me!!
+            </Menu.Item>
+          </Menu>
+        </Header>
+      </motion.div>
+
       <div className="container">
         <Content>
           <section>
@@ -381,7 +405,7 @@ const Homepage = ({ t }) => {
                 </Col>
               </Row>
               <Row style={{ padding: "0 80px" }}>
-              <Col lg={6}>
+                <Col lg={6}>
                   <motion.div className="post-container">
                     <Card bordered={false} className="post">
                       <img src="/images/img1.jpg" alt="my image" />
