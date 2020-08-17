@@ -143,6 +143,7 @@ export default css.global`
         margin: 10px;
         overflow: hidden;
         transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+        cursor: pointer;
     }
 
     .post-container .post {
@@ -178,7 +179,7 @@ export default css.global`
     }
 
     .post-container:hover .post img {
-        filter: grayscale(80%) blur(2px);
+        filter: grayscale(80%) blur(2px) brightness(80%);;
     }
 
     .post-container:hover {
@@ -232,12 +233,16 @@ export default css.global`
     .text-title {
         font-size: 80px;
         font-weight: bold;
-        margin-bottom: 20px;
-        margin-top: 20px;
+        margin-bottom: -20px;
+        margin-top: -20px;
     }
 
     // Moblie view
     @media screen and (max-width: 576px) {
+        .header {
+            padding: 0 60px;
+        }
+
         .text-title {
             font-size: 60px;
             font-weight: bold;
