@@ -30,6 +30,7 @@ import useWindowSize from "../services/useWindowSize";
 
 import HeaderComponent from "../components/header.component";
 import TitleComponent from "../components/title.component";
+import AboutComponent from "../components/about.component";
 
 import "../public/styles/antd.less";
 
@@ -302,158 +303,10 @@ const Homepage = ({ t }) => {
       <div className="container">
         <Content>
           {/* Title */}
-          <TitleComponent wSize={wSize} FadeUpAnimation={FadeUpAnimation}/>
+          <TitleComponent wSize={wSize} FadeUpAnimation={FadeUpAnimation} />
 
           {/* About Me */}
-          <motion.section
-            ref={aboutRef}
-            initial={{
-              opacity: 0,
-              y: 90,
-            }}
-            animate={{
-              opacity: meetAbout ? 1 : 0,
-              y: meetAbout ? 0 : 90,
-              transition: {
-                duration: 0.5,
-                delay: 0.1,
-              },
-            }}
-          >
-            <Row className="about-container">
-              <Col lg={12} sm={24}>
-                <motion.img
-                  src="/images/img1.jpg"
-                  alt="my image"
-                  className="profile-image"
-                  initial={{
-                    opacity: 0.8,
-                    scale: 0.9,
-                    filter: "grayscale(60%)",
-                  }}
-                  whileHover={{
-                    opacity: 1,
-                    scale: 1.1,
-                    filter: "grayscale(0%)",
-                    boxShadow: "0px 10px 10px rgba( 0, 0, 0, 0.2 )",
-                  }}
-                />
-              </Col>
-              <Col lg={12} sm={24}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    height: "100%",
-                  }}
-                >
-                  <article>
-                    <h1 className="text-code display-3">ฉันหรอ?</h1>
-                    <p className="display-2 mb-1">
-                      สวัสดีครับผม ผมขอแนะนำตัวเองหน่อยนะครับ ผมชื่อไนซ์ (์Nice)
-                      ตอนนี้ผมพึ่งจบให้ได้ประมาณ 1 เดือนครับผม
-                      ตัวผมเป็นคนชอบอยู่บ้านผม ชอบปั่นจักยาม บ้างวันถ้าว่างมาก ๆ
-                      ไม่รู้จะทำอะไรก็จะปั่นจักยามไปที่สวนสาธารณะเทศบาลนครหาดใหญ่
-                      แต่ถ้าฝนตกผมชอบเอาโกโก้ร้อน พร้อมคอมที่โหลดหนังที่อยากดู
-                      แล้วออกมานั่งที่สวนข้างบ้านเป็นที่ฟินสุด ๆ ไปเลย
-                    </p>
-                    <p className="display-2 text-sub mb-1">
-                      และอีกเรื่องหนึ่งคือ
-                      ผมชอบเขียนโปรแกรมครับเท่าที่ผมจำความได้ผมเริ่มเขียนโปรแกรมครั้งแรกตอนผมอายุประมาณ
-                      14 - 15 ประมาณช่วงมัธยมต้น
-                      ตอนนั้นเป็นอะไรที่ใหม่สำหรับผมมาก
-                      และเป็นไม่กี่เรื่องที่ผมสามารถหาอะไรใหม่ ๆ
-                      ให้ทำตลอดเวลาทำให้ผมชอบ และยังรักที่จะทำมันอยู่ครับผม
-                      และสุดท้ายนี้ นี้คือทั้งหมดที่ผมเรียนรู้มาครับ
-                    </p>
-
-                    <Row>
-                      <Col span={12}>
-                        <ul>
-                          <motion.li
-                            className="item"
-                            whileHover={{
-                              x: "20px",
-                              originX: 0,
-                              transition: {
-                                type: "spring",
-                                stiffness: 300,
-                              },
-                            }}
-                          >
-                            Reactjs
-                          </motion.li>
-                          <motion.li
-                            className="item"
-                            whileHover={{
-                              x: "20px",
-                              originX: 0,
-                              transition: {
-                                type: "spring",
-                                stiffness: 300,
-                              },
-                            }}
-                          >
-                            VueJs
-                          </motion.li>
-                          <motion.li
-                            className="item"
-                            whileHover={{
-                              x: "20px",
-                              originX: 0,
-                              transition: {
-                                type: "spring",
-                                stiffness: 300,
-                              },
-                            }}
-                          >
-                            Ionic
-                          </motion.li>
-                        </ul>
-                      </Col>
-                      <Col span={12}>
-                        <ul>
-                          <motion.li
-                            className="item"
-                            whileHover={{
-                              x: "20px",
-                              originX: 0,
-                              transition: {
-                                type: "spring",
-                                stiffness: 300,
-                              },
-                            }}
-                          >
-                            Angular
-                          </motion.li>
-                          <motion.li
-                            className="item"
-                            whileHover={{
-                              x: "20px",
-                              originX: 0,
-                              transition: {
-                                type: "spring",
-                                stiffness: 300,
-                              },
-                            }}
-                          >
-                            <Tooltip
-                              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
-                              placement="bottom"
-                              mouseEnterDelay="0.85"
-                            >
-                              NextJs
-                            </Tooltip>
-                          </motion.li>
-                        </ul>
-                      </Col>
-                    </Row>
-                  </article>
-                </div>
-              </Col>
-            </Row>
-          </motion.section>
+          <AboutComponent aboutRef={aboutRef} meetAbout={meetAbout}/>
 
           {/* Education */}
           <motion.section
