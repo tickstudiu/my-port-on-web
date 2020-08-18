@@ -1,4 +1,4 @@
-This is a Portfolio project created by using [Next.js](https://nextjs.org/) project and [Antd](https://ant.design/) 
+This is a portfolio project created by using [Next.js](https://nextjs.org/) project and [Antd](https://ant.design/) 
 
 ## Getting Started
 
