@@ -28,21 +28,12 @@ import globalStyles from "../public/styles/global.js";
 
 import useWindowSize from "../services/useWindowSize";
 
+import HeaderComponent from "../components/header.component";
+
 import "../public/styles/antd.less";
 
 const { Header, Footer, Content } = Layout;
 const { TabPane } = Tabs;
-
-{
-  /* <Button
-          type="button"
-          onClick={() =>
-            i18n.changeLanguage(i18n.language === "th" ? "en" : "th")
-          }
-        >
-          {t("change-locale")}
-        </Button> */
-}
 
 const Homepage = ({ t }) => {
   // Ref for our element
@@ -61,9 +52,6 @@ const Homepage = ({ t }) => {
   const [meetEducation, setMeetEducation] = useState(false);
   const [meetProject, setMeetProject] = useState(false);
   const [meetContact, setMeetContact] = useState(false);
-
-  // State for modal
-  const [showDrawer, setShowDrawer] = useState(false);
 
   // Windown Size
   const wSize = useWindowSize();
@@ -117,8 +105,7 @@ const Homepage = ({ t }) => {
       title: "1ST-G",
       description:
         "เป็นเกมแรกทีผมเสร็จและใช้เวลาเร็วที่สุดในการทำและศึกษาไปด้วย โดยใช้เวลไป 172 ชม",
-      link:
-        "https://tickstudiu.itch.io/1st-g",
+      link: "https://tickstudiu.itch.io/1st-g",
       author: [
         {
           name: "วันเฉลิม",
@@ -128,7 +115,8 @@ const Homepage = ({ t }) => {
       tag: [
         {
           name: "Unity",
-          link: "https://store.unity.com/products/unity-pro?gclid=CjwKCAjw1ej5BRBhEiwAfHyh1OUv_L0f0NceTORRk4lHQaVzK2JyeVrd-abhgJEPS7b85s8KTnC5rBoCmMkQAvD_BwE",
+          link:
+            "https://store.unity.com/products/unity-pro?gclid=CjwKCAjw1ej5BRBhEiwAfHyh1OUv_L0f0NceTORRk4lHQaVzK2JyeVrd-abhgJEPS7b85s8KTnC5rBoCmMkQAvD_BwE",
         },
       ],
     },
@@ -297,176 +285,18 @@ const Homepage = ({ t }) => {
       {/* Header */}
       <BackTop />
 
-      <motion.div
-        style={{ zIndex: 1000 }}
-        animate={{
-          opacity: navState ? 1 : 0,
-        }}
-      >
-        <Header className="header">
-          <motion.h1
-            style={{
-              fontSize: "20px",
-              fontWeight: "bold",
-              display: wSize && wSize.width < 576 ? "none" : "",
-            }}
-            variants={FadeInAnimation}
-            initial="hidden"
-            animate="show"
-          >
-            WANLERM.SPACE
-          </motion.h1>
-
-          <motion.h1
-            style={{
-              fontSize: "20px",
-              fontWeight: "bold",
-              display: wSize && wSize.width < 576 ? "" : "none",
-            }}
-            variants={FadeInAnimation}
-            initial="hidden"
-            animate="show"
-            className="text-center"
-          >
-            WANLERM.SPACE{" "}
-            <CaretLeftOutlined onClick={() => setShowDrawer(!showDrawer)} />
-          </motion.h1>
-
-          <Drawer
-            placement="right"
-            closable={false}
-            onClose={() => setShowDrawer(false)}
-            visible={showDrawer}
-          >
-            <Menu
-              mode="inline"
-              style={{
-                background: "transparent",
-                border: "none",
-              }}
-              selectedKeys={navkey}
-              defaultSelectedKeys={navkey}
-            >
-              <Menu.Item key="1" style={{ fontSize: "20px" }}>
-                <motion.span
-                  variants={FadeDownAnimation}
-                  initial="hidden"
-                  animate="show"
-                  transition={{
-                    delay: 0,
-                  }}
-                  onClick={() => scrollToRef(aboutRef, "1")}
-                >
-                  ฉันหรอ?
-                </motion.span>
-              </Menu.Item>
-              <Menu.Item key="2" style={{ fontSize: "20px" }}>
-                <motion.span
-                  variants={FadeDownAnimation}
-                  initial="hidden"
-                  animate="show"
-                  transition={{
-                    delay: 0.4,
-                  }}
-                  onClick={() => scrollToRef(educationRef, "2")}
-                >
-                  เรียนที่ไหนมา?
-                </motion.span>
-              </Menu.Item>
-              <Menu.Item key="3" style={{ fontSize: "20px" }}>
-                <motion.span
-                  variants={FadeDownAnimation}
-                  initial="hidden"
-                  animate="show"
-                  transition={{
-                    delay: 0.8,
-                  }}
-                  onClick={() => scrollToRef(projectRef, "3")}
-                >
-                  สิ่งที่ฉันทำ?
-                </motion.span>
-              </Menu.Item>
-              <Menu.Item key="4" style={{ fontSize: "20px" }}>
-                <motion.span
-                  variants={FadeDownAnimation}
-                  initial="hidden"
-                  animate="show"
-                  transition={{
-                    delay: 1,
-                  }}
-                  onClick={() => scrollToRef(contactRef, "4")}
-                >
-                  กดฉันสิ!!
-                </motion.span>
-              </Menu.Item>
-            </Menu>
-          </Drawer>
-
-          <Menu
-            mode="horizontal"
-            style={{
-              background: "transparent",
-              border: "none",
-              display: wSize && wSize.width < 576 ? "none" : "",
-            }}
-            selectedKeys={navkey}
-            defaultSelectedKeys={navkey}
-          >
-            <Menu.Item key="1" style={{ fontSize: "20px" }}>
-              <motion.span
-                variants={FadeDownAnimation}
-                initial="hidden"
-                animate="show"
-                transition={{
-                  delay: 0,
-                }}
-                onClick={() => scrollToRef(aboutRef, "1")}
-              >
-                ฉันหรอ?
-              </motion.span>
-            </Menu.Item>
-            <Menu.Item key="2" style={{ fontSize: "20px" }}>
-              <motion.span
-                variants={FadeDownAnimation}
-                initial="hidden"
-                animate="show"
-                transition={{
-                  delay: 0.4,
-                }}
-                onClick={() => scrollToRef(educationRef, "2")}
-              >
-                เรียนที่ไหนมา?
-              </motion.span>
-            </Menu.Item>
-            <Menu.Item key="3" style={{ fontSize: "20px" }}>
-              <motion.span
-                variants={FadeDownAnimation}
-                initial="hidden"
-                animate="show"
-                transition={{
-                  delay: 0.8,
-                }}
-                onClick={() => scrollToRef(projectRef, "3")}
-              >
-                สิ่งที่ฉันทำ?
-              </motion.span>
-            </Menu.Item>
-            <Menu.Item key="4" style={{ fontSize: "20px" }}>
-              <motion.span
-                variants={FadeDownAnimation}
-                initial="hidden"
-                animate="show"
-                transition={{
-                  delay: 1,
-                }}
-                onClick={() => scrollToRef(contactRef, "4")}
-              >
-                กดฉันสิ!!
-              </motion.span>
-            </Menu.Item>
-          </Menu>
-        </Header>
-      </motion.div>
+      <HeaderComponent
+        navState={navState}
+        wSize={wSize}
+        FadeInAnimation={FadeInAnimation}
+        navkey={navkey}
+        FadeDownAnimation={FadeDownAnimation}
+        scrollToRef={scrollToRef}
+        aboutRef={aboutRef}
+        educationRef={educationRef}
+        projectRef={projectRef}
+        contactRef={contactRef}
+      />
 
       <div className="container">
         <Content>
@@ -920,9 +750,9 @@ const Homepage = ({ t }) => {
                 </Col>
               </Row>
               <Row className="project-container">
-                {projectData.map((data) => {
+                {projectData.map((data, index) => {
                   return (
-                    <Col lg={6} sm={24}>
+                    <Col lg={6} sm={24} key={index}>
                       <a href={data.link}>
                         <motion.div className="post-container">
                           <Card bordered={false} className="post">
@@ -1027,9 +857,12 @@ const Homepage = ({ t }) => {
                                   fontSize: "18px",
                                 }}
                               >
-                                <a href="https://github.com/tickstudiu/" className="link">
-                                    วันเฉลิม
-                                  </a>
+                                <a
+                                  href="https://github.com/tickstudiu/"
+                                  className="link"
+                                >
+                                  วันเฉลิม
+                                </a>
                               </li>
                             </ul>
                           </Col>
@@ -1049,9 +882,12 @@ const Homepage = ({ t }) => {
                                   fontSize: "18px",
                                 }}
                               >
-                                <a href="https://github.com/tickstudiu/" className="link">
-                                    NextJs
-                                  </a>
+                                <a
+                                  href="https://github.com/tickstudiu/"
+                                  className="link"
+                                >
+                                  NextJs
+                                </a>
                               </li>
                               <li
                                 className="item"
@@ -1059,9 +895,12 @@ const Homepage = ({ t }) => {
                                   fontSize: "18px",
                                 }}
                               >
-                                <a href="https://github.com/tickstudiu/" className="link">
-                                    Antd
-                                  </a>
+                                <a
+                                  href="https://github.com/tickstudiu/"
+                                  className="link"
+                                >
+                                  Antd
+                                </a>
                               </li>
                             </ul>
                           </Col>

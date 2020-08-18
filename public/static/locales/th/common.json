@@ -1,6 +1,6 @@
 {
     "h1": "Ein einfaches Beispiel",
-    "change-locale": "เปลียน ภาษา",
+    "change-locale": "ไทย",
     "to-second-page": "Zur zweiten Seite",
     "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
     "error-without-status": "Auf dem Server ist ein Fehler aufgetreten"
