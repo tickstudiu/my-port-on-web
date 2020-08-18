@@ -32,6 +32,7 @@ import HeaderComponent from "../components/header.component";
 import TitleComponent from "../components/title.component";
 import AboutComponent from "../components/about.component";
 import EducationComponen from "../components/education.component";
+import ContactComponent from "../components/contact.component";
 
 import "../public/styles/antd.less";
 
@@ -504,141 +505,7 @@ const Homepage = ({ t }) => {
           </motion.section>
 
           {/* Contact */}
-          <motion.section
-            className="touch-me"
-            ref={contactRef}
-            initial={{
-              opacity: 0,
-              y: 90,
-            }}
-            animate={{
-              opacity: meetContact ? 1 : 0,
-              y: meetContact ? 0 : 90,
-              transition: {
-                duration: 0.5,
-                delay: 0.1,
-              },
-            }}
-          >
-            <h2 className="display-2 text-primary">ติดต่อฉัน</h2>
-            <h1 className="text-code display-1">กดฉันสิ!!</h1>
-            <p className="content-touch-me lead text-muted text-center">
-              หากคุณต้องการติดต่อผม ไม่ว่าจะเป็นเรื่องงาน หรือ
-              เรื่องอะไรก็ตามผมได้ใส่ช่องทางในการติดต่อทั้งหมดที่ผมใช้งานประจำเอาไว้แล้วครับ
-              ถ้าเป็นเรื่องช่วยติดต่อมาทางอีเมล หรือ ทางเบอร์โทรนะครับ
-            </p>
-            <p
-              className="content-touch-me lead text-muted text-center"
-              style={{ fontSize: "18px" }}
-            >
-              ปล. หลังจากช่วง 19.00 ผมขอไม่่รับโทรศัพท์นะครับ
-            </p>
-            <Row style={{ marginBottom: "45px" }}>
-              <Col>
-                <motion.div
-                  initial={{
-                    opacity: 0.7,
-                  }}
-                  whileHover={{
-                    scale: 1.5,
-                    color: "#E87B5A",
-                    opacity: 1,
-                    transition: {
-                      type: "spring",
-                      stiffness: 700,
-                    },
-                  }}
-                >
-                  <Tooltip
-                    title="tickstudiu@gmail.com"
-                    placement="bottom"
-                    mouseEnterDelay="0.4"
-                  >
-                    <MailOutlined style={{ padding: "0 20px" }} />
-                  </Tooltip>
-                </motion.div>
-              </Col>
-
-              <Col>
-                <motion.div
-                  initial={{
-                    opacity: 0.7,
-                  }}
-                  whileHover={{
-                    scale: 1.5,
-                    color: "#E87B5A",
-                    opacity: 1,
-                    transition: {
-                      type: "spring",
-                      stiffness: 700,
-                    },
-                  }}
-                >
-                  <Tooltip
-                    title="082-437-7241"
-                    placement="bottom"
-                    mouseEnterDelay="0.4"
-                  >
-                    <PhoneOutlined style={{ padding: "0 20px" }} />
-                  </Tooltip>
-                </motion.div>
-              </Col>
-
-              <Col>
-                <motion.div
-                  initial={{
-                    opacity: 0.7,
-                  }}
-                  whileHover={{
-                    scale: 1.5,
-                    color: "#E87B5A",
-                    opacity: 1,
-                    transition: {
-                      type: "spring",
-                      stiffness: 700,
-                    },
-                  }}
-                >
-                  <Tooltip
-                    title={() => {
-                      return (
-                        <a href="https://www.facebook.com/sliple.ness">Go!!</a>
-                      );
-                    }}
-                    placement="bottom"
-                    mouseEnterDelay="0.4"
-                  >
-                    <FacebookOutlined style={{ padding: "0 20px" }} />
-                  </Tooltip>
-                </motion.div>
-              </Col>
-            </Row>
-            <motion.div
-              whileHover={{
-                y: -5,
-                rotateX: 20,
-                boxShadow: "0px 10px 10px rgba( 232, 123, 90, 0.2 )",
-                transition: {
-                  type: "spring",
-                  stiffness: 300,
-                },
-              }}
-              whileTap={{
-                scale: 0.9,
-                boxShadow: "none",
-              }}
-            >
-              <Button
-                type="primary"
-                style={{
-                  padding: "0px 45px",
-                }}
-                size="large"
-              >
-                ติดต่อผม
-              </Button>
-            </motion.div>
-          </motion.section>
+          <ContactComponent contactRef={contactRef} meetContact={meetContact} />
 
           {/* Footer Logo */}
           <motion.div
