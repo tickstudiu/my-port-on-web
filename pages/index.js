@@ -31,11 +31,12 @@ import useWindowSize from "../services/useWindowSize";
 import HeaderComponent from "../components/header.component";
 import TitleComponent from "../components/title.component";
 import AboutComponent from "../components/about.component";
+import EducationComponen from "../components/education.component";
 
 import "../public/styles/antd.less";
 
 const { Header, Footer, Content } = Layout;
-const { TabPane } = Tabs;
+
 
 const Homepage = ({ t }) => {
   // Ref for our element
@@ -309,163 +310,7 @@ const Homepage = ({ t }) => {
           <AboutComponent aboutRef={aboutRef} meetAbout={meetAbout}/>
 
           {/* Education */}
-          <motion.section
-            ref={educationRef}
-            initial={{
-              opacity: 0,
-              y: 90,
-            }}
-            animate={{
-              opacity: meetEducation ? 1 : 0,
-              y: meetEducation ? 0 : 90,
-              transition: {
-                duration: 0.5,
-                delay: 0.1,
-              },
-            }}
-          >
-            <div>
-              <h1 className="text-code display-3 text-center-sm">
-                เรียนที่ไหนมา?
-              </h1>
-              <Tabs
-                defaultActiveKey="1"
-                tabPosition={wSize.width < 990 ? "top" : "left"}
-                className="tab-container"
-              >
-                <TabPane tab="2009" key="1">
-                  <p className="display-2 mb-1 tab-header">
-                    มัธยมต้น{" "}
-                    <a className="link" href="http://www.yorwor2.ac.th/">
-                      @หาดใหญ่วิทยาลัย2
-                    </a>
-                  </p>
-
-                  <ul>
-                    <li>
-                      <p
-                        className="display-2 text-sub mb-1"
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        ช่วงนั้นผม และครอบครัวกำลังปรึกษาว่าตัวผมนั้นชอบอะไร
-                        และอยากทำอะไรในช่วงนั้นผมได้บอกกับพ่อแม่ว่าผมอยากที่จะสร้างโปรแกรม
-                        แต่ผมไม่รู้ว่าจะทำยังไงพ่อกับแม่เลยหาโครงการ
-                        หรือหลักสูตรที่เกี่ยวข้องกับความสนใจของผม
-                      </p>
-                    </li>
-                    <li>
-                      <p
-                        className="display-2 text-sub mb-1"
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        ด้วยความที่โชคดี ผมได้สอบ
-                        และได้เข้ารับการศึกษาที่หาดใหญ่วิทยาลัยสองในโครงการ
-                        Cyber คือโครงการที่ใช้กระดาษในการเรียนน้อยที่สุด
-                        และใช้งานเทคโนโลยีให้มากที่สุด
-                      </p>
-                    </li>
-                    <li>
-                      <p
-                        className="display-2 text-sub mb-1"
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        ระหว่างนั้นผมได้แข่งขันหุ่นยนต์ในระดับโรงเรียน
-                        และในระดับภาค
-                        และยังได้เป็นตัวแทนการแข่งขันคณิตของโรงเรียนด้วยครับผม
-                      </p>
-                    </li>
-                  </ul>
-                </TabPane>
-                <TabPane tab="2012" key="2">
-                  <p className="display-2 mb-1 tab-header">
-                    มัธยมปลาย{" "}
-                    <a
-                      className="link"
-                      href="http://www.hatyaiwit.ac.th/frontpage"
-                    >
-                      @หาดใหญ่วิทยาลัย
-                    </a>
-                  </p>
-
-                  <ul>
-                    <li>
-                      <p
-                        className="display-2 text-sub mb-1"
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        หลังจากที่จบจากมัธยมต้นก็ได้สอบเข้าในโรงเรียนหาดใหญ่วิทยาลัย
-                        ซึ้งได้เลยในสาย วิทย์ - คณิต
-                        ด้วยความที่ตัวเราชอบในการแข่งขัน และ ชอบหาอะไรใหม่ทำ
-                        ทำให้ตัวผมอยากที่จะลองช่วยงาน กนร ของโรงเรียน
-                        ซึ้งช่วยในเรื่องของสวัสดีการต่าง ๆ เท่าที่ทำได้
-                      </p>
-                    </li>
-                    <li>
-                      <p
-                        className="display-2 text-sub mb-1"
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        และในระหว่างที่ไกล้จะสำเร็จการศึกษาก็ได้เข้าเป็นตัวแทนแข่งขันเกี่ยวกับโปรแกรมหุ่นยนต์ด้วย
-                        ซึ้งผมทำให้ที่เป็นคนเขียนโปแกรม
-                        และคิดเกี่ยวกับระบบในนั้น
-                      </p>
-                    </li>
-                  </ul>
-                </TabPane>
-                <TabPane tab="2015" key="3">
-                  <p className="display-2 mb-1 tab-header">
-                    มหาลัย{" "}
-                    <a className="link" href="https://www.psu.ac.th/th/">
-                      @มหาวิทยาลัยสงขลานครินทร์
-                    </a>
-                  </p>
-
-                  <ul>
-                    <li>
-                      <p
-                        className="display-2 text-sub mb-1"
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        หลังจากที่จบการศึกษาจากหาดใหญ่วิทยาลัย
-                        ได้รับโคต้าเข้ามหาวิทยาลัยสงขลานครินทร์
-                        วิศวกรรมคอมพิวเตอร์
-                        ระหว่างที่รับการศึกษาก็ได้ทำกิจกรรมต่าง ๆ
-                        และได้รับโอกาสจากเพื่อนให้เป็นรองหัวหน้าสวัสดีการ
-                        เพื่อช่วยงานของทางคณะ
-                      </p>
-                    </li>
-                    <li>
-                      <p
-                        className="display-2 text-sub mb-1"
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        ระหว่างได้ศึกษาได้มีโอกาสเป็น TA หรือ
-                        ผู้ช่วยอาจารณ์ในการสอนวิชาดังนี้ LabSoftware LabHardware
-                        OOP Client/Server และ CBT ในช่วงปี 2 - 3
-                        และยังได้แข่งขัน NSC 2019 ในระดับภาคใค้
-                        และยังมีโอกาศในการเข้าอบรมที่ กทม ด้าน desgin
-                        เพื่อกลับให้กับพี่ ๆ น้อง ๆ ทีมีความสนใจด้านนี้เหมือนกัน
-                      </p>
-                    </li>
-                  </ul>
-                </TabPane>
-              </Tabs>
-            </div>
-          </motion.section>
+          <EducationComponen meetEducation={meetEducation} educationRef={educationRef} wSize={wSize}/>
 
           {/* Project */}
           <motion.section
